@@ -80,48 +80,190 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"coba@gmail.com\",\r\n    \"name\" : \"cobaan\",\r\n    \"address\" : \"jalan pantura\",\r\n    \"password\" : \"password\",\r\n    \"password_confirmation\" : \"password\",\r\n    \"roles_id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|3Gv8mScqCbTX0AI3HbbtrQg8A3IwWNvs1qtdStRB",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"password3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"change-password"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "Get",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer 2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "// isi bagian authorization dengan token login yang didapatkan\r\n// contoh : \"Bearer \"+\"2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\"\r\n//Bearer 2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "Get All Feedback",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/list-user",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"list-user"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Favourites",
+			"item": []
+		},
+		{
+			"name": "News",
+			"item": []
+		},
+		{
+			"name": "Machine Learning",
+			"item": [
+				{
+					"name": "Model",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"energi\": 200,\r\n    \"protein\": 10.1,\r\n    \"lemak\": 15.1,\r\n    \"karbohidrat\": 120\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://golekfoodsflask-production.up.railway.app/advpredict",
+							"protocol": "https",
+							"host": [
+								"golekfoodsflask-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"advpredict"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// isi bagian authorization dengan token login yang didapatkan\r\n// contoh : \"Bearer \"+\"2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\"\r\n//Bearer 2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/list-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
