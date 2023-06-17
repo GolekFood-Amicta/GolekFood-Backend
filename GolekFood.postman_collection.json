@@ -198,6 +198,31 @@
 					"response": []
 				},
 				{
+					"name": "Get Feedback by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/feedback/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"feedback",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Add Feedback",
 					"request": {
 						"method": "POST",
@@ -230,7 +255,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_feedback\" : 21,     //primary\r\n    \"user_id\": 3,\r\n    \"content\" : \"mantap2\"\r\n}",
+							"raw": "{\r\n    \"id_feedback\" : 1,     //primary\r\n    \"content\" : \"mantap-mantap bang hehehehe3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -283,7 +308,146 @@
 		},
 		{
 			"name": "News",
-			"item": []
+			"item": [
+				{
+					"name": "Get All News",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/news",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get News by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/news/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"news",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get News by user Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/news-user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"news-user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Feedback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\" : 3, \r\n    \"title\" : \"ini isi pendek\",\r\n    \"body\" : \"yang ini isi lebih panjang bang\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/news",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update News",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_news\" : 1,     //primary\r\n    \"title\" : \"mantap2\",\r\n    \"body\": \"mantap2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/news",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Feedback",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_news\" : 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/news",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Machine Learning",

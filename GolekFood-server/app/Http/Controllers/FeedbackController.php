@@ -72,14 +72,14 @@ class FeedbackController extends Controller
     {
         try {
             $data = [
-                'id_feedback' => $request->id_feedback
+                'id_feedback' => $request->id_feedback,
+                'content' => $request->content
             ];
             $feedback = Feedback::where('id', $request->id_feedback)->first();
-
-            $user = User::where('id', $request->user_id)->first();
-            if (!$user) {
-                return new PostResource(false, "User tidak ditemukan");
+            if (!$feedback) {
+                return new PostResource(false, "Feedback tidak ditemukan");
             }
+
 
             $feedback->update($data);
             return new PostResource(true, "Feedback berhasil diubah", $feedback);

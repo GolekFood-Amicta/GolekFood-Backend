@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,20 @@ Route::controller(FeedbackController::class)->group(function () {
         Route::get('/{id}', 'getFeedbackByIdUser');
     });
 
+});
+
+
+//News
+Route::controller(NewsController::class)->group(function () {
+    Route::prefix('/news')->group(function () {
+        Route::get('/', 'getNews');
+        Route::get('/{id}', 'getNews');
+        Route::post('/', 'addNews');
+        Route::delete('/', 'deleteNews');
+        Route::put('/', 'updateNews');
+    });
+
+    Route::prefix('news-user')->group(function (){
+        Route::get('/{id}', 'getNewsByIdUser');
+    });
 });
