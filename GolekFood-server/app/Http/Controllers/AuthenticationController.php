@@ -79,4 +79,51 @@ class AuthenticationController extends Controller
             return new PostResource(false, "logout gagal");
         }
     }
+
+    public function register(Request $request)
+    {
+        $rules = [
+            'email' => 'required|email|unique:users',
+            'name' => 'required|min:4|max:32',
+            'address' => 'required|min:4|max:32',
+            'password' => 'required|min:6|confirmed',
+            'roles_id' => 'required',
+
+        ];
+
+        $messages = [
+            'email.required'        => 'Email wajib diisi',
+            'email.email'           => 'Email tidak valid',
+            'email.unique'          => 'Email sudah terdaftar',
+            'name.required' => 'Nama Lengkap wajib diisi',
+            'name.min'      => 'Nama lengkap minimal 4 karakter',
+            'name.max'      => 'Nama lengkap maksimal 32 karakter',
+            'password.required'     => 'Password wajib diisi',
+            'password.min'          => 'Password minimal 6 karakter',
+            'password.confirmed'    => 'Password tidak sama dengan konfirmasi password',
+            'roles_id.required'     => 'Roles tidak tersedia',
+            'address.required' => 'Alamat wajib diisi',
+            'address.min'      => 'Alamat minimal 4 karakter',
+            'address.max'      => 'Alamat maksimal 32 karakter',
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return new PostResource(false, $validator->errors()->first());
+        }
+        $data = [
+            'email' => strtolower($request->email),
+            'name' => strtolower($request->name),
+            'address' => $request->address,
+            'password' => Hash::make($request->password),
+            'roles_id' => $request->roles_id,
+        ];
+        try {
+            $user = User::create($data);
+            return new PostResource(true, "User berhasil teregistrasi", $user);
+        } catch (\Throwable $th) {
+            return new PostResource(false, $th->getMessage());
+        }
+    }
 }

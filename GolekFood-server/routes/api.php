@@ -20,3 +20,4 @@ Route::get('/list-user', [UserController::class,'index'])->middleware(['auth:san
 
 Route::post('/login', [AuthenticationController::class, 'login']);
 Route::get('/logout', [AuthenticationController::class, 'logout'])->middleware(['auth:sanctum']);
+Route::post('/register', [AuthenticationController::class, 'register']);
