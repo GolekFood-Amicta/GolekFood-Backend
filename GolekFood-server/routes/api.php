@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
@@ -38,7 +39,6 @@ Route::controller(FeedbackController::class)->group(function () {
     Route::prefix('/feedback-user')->group(function () {
         Route::get('/{id}', 'getFeedbackByIdUser');
     });
-
 });
 
 
@@ -52,7 +52,23 @@ Route::controller(NewsController::class)->group(function () {
         Route::put('/', 'updateNews');
     });
 
-    Route::prefix('news-user')->group(function (){
+    Route::prefix('/news-user')->group(function (){
         Route::get('/{id}', 'getNewsByIdUser');
     });
 });
+
+//Favourite
+Route::controller(FavouriteController::class)->group(function(){
+    Route::prefix('/favourite')->group(function (){
+        Route::get('/', 'getFavourite');
+        Route::get('/{id}', 'getFavourite');
+        Route::post('/', 'addFavourite');
+        Route::put('/', 'updateFavourite');
+        Route::delete('/', 'deleteFavourite');
+    });
+
+    Route::prefix('/favourite-user')->group(function(){
+        Route::get('/{id}', 'getFavouriteByIdUser');
+    });
+});
+
