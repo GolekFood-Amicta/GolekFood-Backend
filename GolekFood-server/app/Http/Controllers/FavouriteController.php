@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreFavouriteRequest;
 use App\Http\Requests\UpdateFavouriteRequest;
+use Illuminate\Support\Facades\Http;
 
 class FavouriteController extends Controller
 {
@@ -44,6 +45,7 @@ class FavouriteController extends Controller
             } else {
                 $rules = [
                     'user_id' => 'required',
+                    'food_id' => 'required',
                     'foodname'=> 'required',
                     'fat' => 'required',
                     'protein' => 'required',
@@ -61,8 +63,9 @@ class FavouriteController extends Controller
                 }
 
                 $data = [
-                    'user_id' => $request->user_id,
                     'id_favourite' => $request->id_favourite,
+                    'user_id' => $request->user_id,
+                    'food_id' => $request->food_id,
                     'foodname' => $request->foodname,
                     'fat' => $request->fat,
                     'protein' => $request->protein,
@@ -84,6 +87,7 @@ class FavouriteController extends Controller
         try {
             $data = [
                 'id_favourite' => $request->id_favourite,
+                'food_id' => $request->food_id,
                 'foodname' => $request->foodname,
                 'fat' => $request->fat,
                 'protein' => $request->protein,
@@ -111,6 +115,42 @@ class FavouriteController extends Controller
         } catch (\Throwable $th) {
             return new PostResource(false, "Favourite Gagal dihapus");
         }
+    }
+
+
+    public function discoverFood(Request $request)
+    {
+        try {
+            $url = "https://golekfoodsflask-production.up.railway.app/advpredict"; // Ganti dengan URL API yang sesuai
+    
+            $data = [
+                "user_id" => $request->user_id,
+                "energi" => $request->energi,
+                "protein" => $request->protein,
+                "lemak" => $request->lemak,
+                "karbohidrat" => $request->karbohidrat
+            ];
+        
+            $response = Http::post($url, $data);
+            
+            $data = $response->json();
+            // Mengakses data di dalam "data"
+            $recom = $data['data'];
+
+            // Menambahkan key "is_favourite" pada setiap data
+            $recomWithFavourite = array_map(function ($item) use ($request) {
+                $item['is_favourite'] = Favourite::where('user_id', $request->user_id)->where('food_id', $item['id_food'])->exists();
+                return $item;
+            }, $recom);
+        
+            // Menggabungkan data yang telah ditambahkan "is_favourite" ke dalam "data"
+            $result = ['data' => $recomWithFavourite];
+
+            return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
+        } catch (\Throwable $th) {
+            return new PostResource(false, "Gagal mendapatkan data discover Food");
+        }
+
     }
 
 }

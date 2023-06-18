@@ -19,6 +19,7 @@ class FavouriteFactory extends Factory
         return [
             //
             'user_id' => rand(1,5),
+            'food_id' => rand(1,1000),
             'foodname' => fake()->firstName() . 'food',
             'fat' => rand(1,1000),
             'protein' => rand(1,1000),

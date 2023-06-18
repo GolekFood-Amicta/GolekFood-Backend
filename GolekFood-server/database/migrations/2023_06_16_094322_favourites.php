@@ -21,6 +21,7 @@ return new class extends Migration
             // image
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('food_id');
             $table->string('foodname');
             $table->string('fat');
             $table->string('protein');

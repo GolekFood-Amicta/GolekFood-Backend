@@ -5,6 +5,7 @@ use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
+use App\Models\Favourite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -82,6 +83,6 @@ Route::controller(FavouriteController::class)->group(function(){
 });
 
 //Discover Food
-Route::post('/discover-food', [AuthenticationController::class, 'index']);
+Route::post('/discover-food', [FavouriteController::class, 'discoverFood']);
 
 
