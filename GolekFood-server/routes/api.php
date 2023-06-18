@@ -19,12 +19,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/list-user', [UserController::class,'index']);
-
 Route::post('/login', [AuthenticationController::class, 'login']);
 Route::get('/logout', [AuthenticationController::class, 'logout'])->middleware(['auth:sanctum']);
 Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/change-password', [AuthenticationController::class, 'changePassword'])->middleware(['auth:sanctum']);
+
+//User
+Route::controller(UserController::class)->group(function(){
+    Route::prefix('/user')->group(function (){
+        Route::get('/', 'getUser');
+        Route::get('/{id}', 'getUser');
+        Route::put('/', 'updateUser');
+        Route::delete('/', 'deleteUser');
+    });
+});
+
 
 //feedback
 Route::controller(FeedbackController::class)->group(function () {
@@ -71,4 +80,8 @@ Route::controller(FavouriteController::class)->group(function(){
         Route::get('/{id}', 'getFavouriteByIdUser');
     });
 });
+
+//Discover Food
+Route::post('/discover-food', [AuthenticationController::class, 'index']);
+
 

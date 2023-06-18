@@ -15,21 +15,6 @@ class AuthenticationController extends Controller
 {
     //
     public function login(Request $request){
-        // $request->validate([
-        //     'email' => 'required',
-        //     'password' => 'required'
-        // ]);
-
-        // $user = User::where('email', $request->email)->first();
-        // // dd($user);
-        // if (! $user || ! Hash::check($request->password, $user->password)) {
-        //     throw ValidationException::withMessages([
-        //         'email' => ['The provided credentials are incorrect.'],
-        //     ]);
-        // }
-     
-        // return $user->createToken('g0l3kF0oD')->plainTextToken;
-
         $rules = [
             'email'         => 'required',
             'password'      => 'required',
@@ -66,7 +51,6 @@ class AuthenticationController extends Controller
     }
 
     public function logout(Request $request){
-        // $request->user()->currentAccessToken()->delete();
         try {
             $user = $request->user();
             $user->tokens()->where('id', $user->id)->delete();
