@@ -84,5 +84,6 @@ Route::controller(FavouriteController::class)->group(function(){
 
 //Discover Food
 Route::post('/discover-food', [FavouriteController::class, 'discoverFood']);
+Route::post('/discover-food-adv', [FavouriteController::class, 'discoverFoodAdv']);
 
 

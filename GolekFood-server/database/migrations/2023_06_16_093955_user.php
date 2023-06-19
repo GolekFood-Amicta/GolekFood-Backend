@@ -19,6 +19,7 @@ return new class extends Migration
             // address
             // avatar
             // roles id
+            
             $table->id();
             $table->string('email')->unique();
             $table->string('name');

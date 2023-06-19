@@ -121,7 +121,7 @@ class FavouriteController extends Controller
     public function discoverFood(Request $request)
     {
         try {
-            $url = "https://golekfoodsflask-production.up.railway.app/advpredict"; // Ganti dengan URL API yang sesuai
+            $url = "http://34.101.68.137:5000/predict"; // Ganti dengan URL API yang sesuai
     
             $data = [
                 "user_id" => $request->user_id,
@@ -144,7 +144,7 @@ class FavouriteController extends Controller
             }, $recom);
         
             // Menggabungkan data yang telah ditambahkan "is_favourite" ke dalam "data"
-            $result = ['data' => $recomWithFavourite];
+            $result = $recomWithFavourite;
 
             return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
         } catch (\Throwable $th) {
@@ -152,5 +152,41 @@ class FavouriteController extends Controller
         }
 
     }
+
+    public function discoverFoodAdv(Request $request)
+    {
+        try {
+            $url = "http://34.101.68.137:5000/advpredict"; // Ganti dengan URL API yang sesuai
+    
+            $data = [
+                "user_id" => $request->user_id,
+                "energi" => $request->energi,
+                "protein" => $request->protein,
+                "lemak" => $request->lemak,
+                "karbohidrat" => $request->karbohidrat
+            ];
+        
+            $response = Http::post($url, $data);
+            
+            $data = $response->json();
+            // Mengakses data di dalam "data"
+            $recom = $data['data'];
+
+            // Menambahkan key "is_favourite" pada setiap data
+            $recomWithFavourite = array_map(function ($item) use ($request) {
+                $item['is_favourite'] = Favourite::where('user_id', $request->user_id)->where('food_id', $item['id_food'])->exists();
+                return $item;
+            }, $recom);
+        
+            // Menggabungkan data yang telah ditambahkan "is_favourite" ke dalam "data"
+            $result = $recomWithFavourite;
+
+            return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
+        } catch (\Throwable $th) {
+            return new PostResource(false, "Gagal mendapatkan data discover Food");
+        }
+
+    }
+
 
 }
