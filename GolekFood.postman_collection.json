@@ -636,17 +636,23 @@
 			"name": "News",
 			"item": [
 				{
-					"name": "Get All News",
+					"name": "Get News with Paginate",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/news",
+							"raw": "{{url}}/news?page=3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"news"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3"
+								}
 							]
 						}
 					},
@@ -799,16 +805,54 @@
 							}
 						},
 						"url": {
-							"raw": "https://golekfoodsflask-production.up.railway.app/advpredict",
-							"protocol": "https",
+							"raw": "http://34.101.68.137:5000/advpredict",
+							"protocol": "http",
 							"host": [
-								"golekfoodsflask-production",
-								"up",
-								"railway",
-								"app"
+								"34",
+								"101",
+								"68",
+								"137"
 							],
+							"port": "5000",
 							"path": [
 								"advpredict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Model Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"energi\": 200,\r\n    \"protein\": 10.1,\r\n    \"lemak\": 15.1,\r\n    \"karbohidrat\": 120\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.101.68.137:5000/predict",
+							"protocol": "http",
+							"host": [
+								"34",
+								"101",
+								"68",
+								"137"
+							],
+							"port": "5000",
+							"path": [
+								"predict"
 							]
 						}
 					},

@@ -14,14 +14,14 @@ class NewsController extends Controller
 {
 
 
-    public function getNews($id = null)
+    public function getNews($id = null,)
     {
         try {
             if (isset($id)) {
                 $news = News::where('id', $id)->first();
             } else {
-                $news = News::all();
-            }
+                $news = News::paginate(5);
+            }   
             return new PostResource(true, "data News ditemukan", $news);
         } catch (\Throwable $th) {
             return new PostResource(false, "data News tidak ada");
