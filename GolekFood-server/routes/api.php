@@ -30,7 +30,7 @@ Route::controller(UserController::class)->group(function(){
     Route::prefix('/user')->group(function (){
         Route::get('/', 'getUser');
         Route::get('/{id}', 'getUser');
-        Route::put('/', 'updateUser');
+        Route::post('/{id}', 'updateUser');
         Route::delete('/', 'deleteUser');
     });
 });

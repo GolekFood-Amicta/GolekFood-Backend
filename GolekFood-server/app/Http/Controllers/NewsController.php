@@ -97,7 +97,10 @@ class NewsController extends Controller
                  $fileName = $this->generateRandomString();
                  $extension = $request->file->extension();
                  $image = $fileName.'.'.$extension;
-                 Storage::delete('image'.$news->image);
+                 if($news->image != 'default-image.png'){
+                    Storage::delete('image/'.$news->image);
+                }
+                 //Storage::delete('image'.$news->image);
                  Storage::putFileAs('image', $request->file, $image);
              }
 

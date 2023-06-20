@@ -201,7 +201,7 @@
 				{
 					"name": "Update User",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
@@ -210,21 +210,43 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id_user\" : 6,\r\n    \"email\" : \"coba2@gmail.com\",\r\n    \"name\" : \"cobaan\",\r\n    \"address\" : \"jalan pantura\",\r\n    \"password\" : \"password\",\r\n    \"roles_id\" : 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/arifi/Downloads/114f2c31-2b04-4fa4-bce0-3d5266a7ef6b.png"
+								},
+								{
+									"key": "name",
+									"value": "Restu",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "jalan pantura",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "roles_id",
+									"value": "1",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{url}}/user",
+							"raw": "{{url}}/user/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user"
+								"user",
+								"1"
 							]
 						}
 					},
@@ -434,13 +456,19 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id_feedback\" : 1,     //primary\r\n    \"content\" : \"mantap-mantap bang hehehehe3\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_feedback",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "mantap",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/feedback",
@@ -664,13 +692,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/news/1",
+							"raw": "{{url}}/news/22",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"news",
-								"1"
+								"22"
 							]
 						}
 					},
@@ -702,18 +730,41 @@
 					"response": []
 				},
 				{
-					"name": "Add Feedback",
+					"name": "Add News",
 					"request": {
 						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"user_id\" : 3, \r\n    \"title\" : \"ini isi pendek\",\r\n    \"body\" : \"yang ini isi lebih panjang bang\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+						"header": [
+							{
+								"key": "image",
+								"value": "",
+								"type": "text",
+								"disabled": true
 							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/arifi/Downloads/350739687_162714476633360_7914491254946479927_n.jpg"
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "ini isi pendek",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "yang ini isi lebih panjang bang",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/news",
@@ -730,37 +781,61 @@
 				{
 					"name": "Update News",
 					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id_news\" : 1,     //primary\r\n    \"title\" : \"mantap2\",\r\n    \"body\": \"mantap2\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
 							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_news",
+									"value": "22",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/arifi/Downloads/352804184_1661953910988149_2620951786030747974_n.jpg"
+								},
+								{
+									"key": "title",
+									"value": "ini title asdasd",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "ini isinya buat body",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
-							"raw": "{{url}}/news",
+							"raw": "{{url}}/news/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"news"
+								"news",
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Feedback",
+					"name": "Delete News",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_news\" : 21\r\n}",
+							"raw": "{\r\n    \"id_news\" : 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

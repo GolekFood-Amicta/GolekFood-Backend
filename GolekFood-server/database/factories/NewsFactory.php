@@ -20,7 +20,8 @@ class NewsFactory extends Factory
             //
             'user_id' => 1,
             'title' => fake()->sentence(),
-            'body' => fake()->text(300)
+            'body' => fake()->text(300),
+            'image' => 'default-news.jpg'
         ];
     }
 }
