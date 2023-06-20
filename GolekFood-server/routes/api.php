@@ -59,7 +59,7 @@ Route::controller(NewsController::class)->group(function () {
         Route::get('/{id}', 'getNews');
         Route::post('/', 'addNews');
         Route::delete('/', 'deleteNews');
-        Route::put('/', 'updateNews');
+        Route::post('/{id}', 'updateNews');
     });
 
     Route::prefix('/news-user')->group(function (){

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -41,9 +42,7 @@ class NewsController extends Controller
     public function addNews(Request $request)
     {
         try {
-            if (isset($request->id_news)) {
-                return $this->updateNews($request);
-            } else {
+
                 $rules = [
                     'user_id' => 'required',
                     'title' => 'required', 
@@ -58,33 +57,56 @@ class NewsController extends Controller
                     return new PostResource(false, "User tidak ditemukan");
                 }
 
+                $image = null;
+                if($request->file){
+                    $fileName = $this->generateRandomString();
+                    $extension = $request->file->extension();
+                    $image = $fileName.'.'.$extension;
+
+                    Storage::putFileAs('image', $request->file, $image);
+                }
+
+
                 $data = [
                     'user_id' => $request->user_id,
-                    'title' => $request->user_id,
-                    'body' => $request->body
+                    'title' => $request->title,
+                    'body' => $request->body,
+                    'image' => $image
                 ];
-                $feedback = News::create($data);
-            }
 
-            return new PostResource(true, "Feedback berhasil ditambahkan", $feedback);
+                $news = News::create($data);
+        
+
+            return new PostResource(true, "News berhasil ditambahkan", $news);
         } catch (\Throwable $th) {
-            return new PostResource(false, "feedback gagal ditambahkan");
+            return new PostResource(false, "News gagal ditambahkan");
         }
     }
 
 
-    public function updateNews(Request $request)
+    public function updateNews(Request $request, $id)
     {
         try {
-            $data = [
-                'id_news' => $request->id_news,
-                'title' => $request->title,
-                'body' => $request->body
-            ];
-            $news = News::where('id', $request->id_news)->first();
+            $news = News::where('id', $id)->first();
             if (!$news) {
                 return new PostResource(false, "News tidak ditemukan");
             }
+
+             $image = $news->image;
+             if($request->file){
+                 $fileName = $this->generateRandomString();
+                 $extension = $request->file->extension();
+                 $image = $fileName.'.'.$extension;
+                 Storage::delete('image'.$news->image);
+                 Storage::putFileAs('image', $request->file, $image);
+             }
+
+            $data = [
+                'id_news' => $request->id_news,
+                'title' => $request->title,
+                'body' => $request->body,
+                'image' => $image
+            ];
 
             $news->update($data);
             return new PostResource(true, "data News berhasil diubah", $news);
@@ -96,12 +118,23 @@ class NewsController extends Controller
     public function deleteNews(Request $request)
     {
         try {
-            $feedback = News::where('id', $request->id_news)->first();
-            $feedback->delete();
-            return new PostResource(true, "News Berhasil dihapus", $feedback);
+            $news = News::where('id', $request->id_news)->first();
+            Storage::delete('image/'.$news->image);
+            $news->delete();
+            return new PostResource(true, "News Berhasil dihapus", $news);
         } catch (\Throwable $th) {
             return new PostResource(false, "News Gagal dihapus");
         }
+    }
+
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
 }
