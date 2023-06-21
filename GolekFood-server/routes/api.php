@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SurveyResultController;
 use App\Http\Controllers\UserController;
 use App\Models\Favourite;
 use App\Models\SurveyResult;
@@ -84,11 +85,11 @@ Route::controller(FavouriteController::class)->group(function(){
 });
 
 //Survey Result
-Route::controller(SurveyResult::class)->group(function(){
-    Route::prefix('/survey')->group(function (){
-        Route::get('/', 'getSurvey');
-
-        
+Route::controller(SurveyResultController::class)->group(function(){
+    Route::prefix('/survey-result')->group(function (){
+        Route::get('/', 'getSurveyResult');
+        Route::post('/', 'addSurveyResult');
+        Route::delete('/', 'deleteSurveyResult');
     });
 });
 

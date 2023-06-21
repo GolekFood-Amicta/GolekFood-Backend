@@ -511,6 +511,86 @@
 			]
 		},
 		{
+			"name": "Survey Result",
+			"item": [
+				{
+					"name": "Get All Survey Result",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/survey-result",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"survey-result"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Survey Result",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"umur\" : 16, \r\n    \"hasil\" : \"food\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/survey-result",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"survey-result"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Survey Result",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_survey\" : 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/survey-result",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"survey-result"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Favourites",
 			"item": [
 				{
