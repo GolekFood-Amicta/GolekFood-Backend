@@ -6,6 +6,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 use App\Models\Favourite;
+use App\Models\SurveyResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -81,6 +82,16 @@ Route::controller(FavouriteController::class)->group(function(){
         Route::get('/{id}', 'getFavouriteByIdUser');
     });
 });
+
+//Survey Result
+Route::controller(SurveyResult::class)->group(function(){
+    Route::prefix('/survey')->group(function (){
+        Route::get('/', 'getSurvey');
+
+        
+    });
+});
+
 
 //Discover Food
 Route::post('/discover-food', [FavouriteController::class, 'discoverFood']);

@@ -8,6 +8,7 @@ use App\Models\News;
 use App\Models\User;
 use App\Models\Feedback;
 use App\Models\Favourite;
+use App\Models\SurveyResult;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 
@@ -34,5 +35,6 @@ class DatabaseSeeder extends Seeder
         Feedback::factory(20)->create();
         Favourite::factory(20)->create();
         News::factory(20)->create();
+        SurveyResult::factory(100)->create();
     }
 }
