@@ -11,6 +11,7 @@ class SurveyResult extends Model
     
     protected $fillable = [
         'umur',
+        'jenis_kelamin',
         'hasil'
     ];
 }

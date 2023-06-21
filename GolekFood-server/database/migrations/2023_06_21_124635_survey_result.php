@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('survey_results', function (Blueprint $table) {
             $table->id();
             $table->integer('umur');
+            $table->enum('jenis_kelamin', ['L','P']);
             $table->string('hasil');
             $table->timestamps();
         });

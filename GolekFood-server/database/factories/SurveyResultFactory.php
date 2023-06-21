@@ -20,6 +20,7 @@ class SurveyResultFactory extends Factory
             //
             'umur' => rand(12,60),
             'hasil' =>  fake()->randomElement(['Diet', 'Bulking', 'Other']),
+            'jenis_kelamin' => fake()->randomElement(['L', 'P'])
         ];
     }
 }

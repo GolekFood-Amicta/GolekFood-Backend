@@ -26,6 +26,7 @@ class SurveyResultController extends Controller
 
                 $rules = [
                     'umur' => 'required',
+                    'jenis_kelamin' => 'required',
                     'hasil' => 'required', 
                 ];
                 $validation = Validator::make($request->all(), $rules);
@@ -35,13 +36,14 @@ class SurveyResultController extends Controller
 
                 $data = [
                     'umur' => $request->umur,
+                    'jenis_kelamin' => $request->jenis_kelamin,
                     'hasil' => $request->hasil,
                 ];
 
-                $news = SurveyResult::create($data);
+                $survey = SurveyResult::create($data);
         
 
-            return new PostResource(true, "Survey Result berhasil ditambahkan", $news);
+            return new PostResource(true, "Survey Result berhasil ditambahkan", $survey);
         } catch (\Throwable $th) {
             return new PostResource(false, "Survey Result gagal ditambahkan");
         }
