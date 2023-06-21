@@ -543,7 +543,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"umur\" : 16, \r\n    \"hasil\" : \"food\"\r\n}",
+							"raw": "{\r\n    \"umur\" : 16, \r\n    \"jenis_kelamin\" : \"P\",\r\n    \"hasil\" : \"food\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
