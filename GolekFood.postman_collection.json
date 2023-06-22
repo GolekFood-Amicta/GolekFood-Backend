@@ -281,76 +281,165 @@
 			]
 		},
 		{
-			"name": "Discover-Foods",
+			"name": "Discover-Food",
 			"item": [
 				{
-					"name": "Cek Validasi Favourite by User Id",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"user_id\" : 1,\r\n    \"energi\": 0.12,\r\n    \"protein\": 0.3,\r\n    \"lemak\": 0.45,\r\n    \"karbohidrat\": 0.6\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Discover-Food Public",
+					"item": [
+						{
+							"name": "Discover-Foods-Adv",
+							"item": [
+								{
+									"name": "Response ML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"energi\": 200,\r\n    \"protein\": 10.1,\r\n    \"lemak\": 15.1,\r\n    \"karbohidrat\": 120\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/discover-food-adv-public",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"discover-food-adv-public"
+											]
+										}
+									},
+									"response": []
 								}
-							}
+							]
 						},
-						"url": {
-							"raw": "{{url}}/discover-food",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"discover-food"
+						{
+							"name": "Discover-Foods",
+							"item": [
+								{
+									"name": "Response ML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"energi\": 0.12,\r\n    \"protein\": 0.3,\r\n    \"lemak\": 0.45,\r\n    \"karbohidrat\": 0.6\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/discover-food-public",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"discover-food-public"
+											]
+										}
+									},
+									"response": []
+								}
 							]
 						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Discover-Foods-Adv",
-			"item": [
+					]
+				},
 				{
-					"name": "Cek Validasi Favourite by User Id",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"user_id\" : 1,\r\n    \"energi\": 200,\r\n    \"protein\": 10.1,\r\n    \"lemak\": 15.1,\r\n    \"karbohidrat\": 120\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Discover-Food Non-Public",
+					"item": [
+						{
+							"name": "Discover-Foods",
+							"item": [
+								{
+									"name": "Cek Validasi Favourite by User Id",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_id\" : 1,\r\n    \"energi\": 0.12,\r\n    \"protein\": 0.3,\r\n    \"lemak\": 0.45,\r\n    \"karbohidrat\": 0.6\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/discover-food",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"discover-food"
+											]
+										}
+									},
+									"response": []
 								}
-							}
+							]
 						},
-						"url": {
-							"raw": "{{url}}/discover-food-adv",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"discover-food-adv"
+						{
+							"name": "Discover-Foods-Adv",
+							"item": [
+								{
+									"name": "Cek Validasi Favourite by User Id",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_id\" : 1,\r\n    \"energi\": 200,\r\n    \"protein\": 10.1,\r\n    \"lemak\": 15.1,\r\n    \"karbohidrat\": 120\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/discover-food-adv",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"discover-food-adv"
+											]
+										}
+									},
+									"response": []
+								}
 							]
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},

@@ -188,5 +188,55 @@ class FavouriteController extends Controller
 
     }
 
+    public function discoverFoodPublic(Request $request)
+    {
+        try {
+            $url = "http://34.101.68.137:5000/predict"; // Ganti dengan URL API yang sesuai
+    
+            $data = [
+                "energi" => $request->energi,
+                "protein" => $request->protein,
+                "lemak" => $request->lemak,
+                "karbohidrat" => $request->karbohidrat
+            ];
+        
+            $response = Http::post($url, $data);
+            
+            $data = $response->json();
+            // Mengakses data di dalam "data"
+            $result = $data['data'];
 
+
+            return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
+        } catch (\Throwable $th) {
+            return new PostResource(false, "Gagal mendapatkan data discover Food");
+        }
+
+    }
+
+    public function discoverFoodAdvPublic(Request $request)
+    {
+        try {
+            $url = "http://34.101.68.137:5000/advpredict"; // Ganti dengan URL API yang sesuai
+    
+            $data = [
+                "energi" => $request->energi,
+                "protein" => $request->protein,
+                "lemak" => $request->lemak,
+                "karbohidrat" => $request->karbohidrat
+            ];
+        
+            $response = Http::post($url, $data);
+            
+            $data = $response->json();
+            // Mengakses data di dalam "data"
+            $result = $data['data'];
+
+
+            return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
+        } catch (\Throwable $th) {
+            return new PostResource(false, "Gagal mendapatkan data discover Food");
+        }
+
+    }
 }
