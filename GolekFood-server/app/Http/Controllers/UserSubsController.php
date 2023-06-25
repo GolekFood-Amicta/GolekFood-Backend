@@ -46,22 +46,22 @@ class UserSubsController extends Controller
             }
 
             if(($request->subscription) == "Mingguan"){
-                $subscription_end = Carbon::now()->addDays(7)->format('Y-m-d H:i:s');
+                $subscription_end = Carbon::now()->addDays(7);
             }
 
             if(($request->subscription) == "Bulanan"){
-                $subscription_end = Carbon::now()->addMonth()->format('Y-m-d H:i:s');
+                $subscription_end = Carbon::now()->addMonth();
             }
 
             if(($request->subscription) == "Tahunan"){
-                $subscription_end = Carbon::now()->addYear()->format('Y-m-d H:i:s');
+                $subscription_end = Carbon::now()->addYear();
             }
 
 
             $data = [
                 'user_id' => $request->user_id,
                 'subscription' => $request->subscription,
-                'subscription_start' => Carbon::now()->format('Y-m-d H:i:s'),
+                'subscription_start' => Carbon::now(),
                 'subscription_end' => $subscription_end
             ];
             $feedback = UserSubs::create($data);
