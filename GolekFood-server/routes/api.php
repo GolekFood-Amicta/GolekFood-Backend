@@ -6,8 +6,6 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SurveyResultController;
 use App\Http\Controllers\UserController;
-use App\Models\Favourite;
-use App\Models\SurveyResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

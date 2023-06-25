@@ -27,16 +27,16 @@ class UserSeeder extends Seeder
                 'email' => 'ade@gmail.com',
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
-                'roles_id' => rand(1,2),
-                'avatar' => 'default-profile.png'
+                'roles_id' => rand(1,2)
+                
             ],
             [
                 'name' => 'Anas Hanif',
                 'email' => 'anas@gmail.com',
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
-                'roles_id' => rand(1,2),
-                'avatar' => 'default-profile.png'
+                'roles_id' => rand(1,2)
+                
             ],
             [
                 'name' => 'Ken Diani',
@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
                 'roles_id' => rand(1,2),
-                'avatar' => 'default-profile.png'
+                
             ],
             [
                 'name' => 'Zaky',
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
                 'roles_id' => rand(1,2),
-                'avatar' => 'default-profile.png'
+            
             ],
             [
                 'name' => 'Arifin',
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
                 'roles_id' => rand(1,2),
-                'avatar' => 'default-profile.png'
+        
             ],
         ];
         foreach ($data as $d) {
