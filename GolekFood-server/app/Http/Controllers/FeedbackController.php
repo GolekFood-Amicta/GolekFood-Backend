@@ -17,8 +17,15 @@ class FeedbackController extends Controller
         try {
             if (isset($id)) {
                 $feedback = Feedback::where('id', $id)->first();
+                $feedback->user = User::where('id',$feedback->user_id)->first();
+                unset($feedback->user_id);
             } else {
                 $feedback = Feedback::all();
+                foreach ($feedback as $data) {
+                    $user_id = $data->user->id;
+                    unset($data->user_id);
+                    $data->user = User::where('id', $user_id)->first();
+                }
             }
             return new PostResource(true, "data feedback ditemukan", $feedback);
         } catch (\Throwable $th) {

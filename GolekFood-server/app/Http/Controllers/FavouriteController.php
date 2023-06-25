@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreFavouriteRequest;
 use App\Http\Requests\UpdateFavouriteRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Http;
 
 class FavouriteController extends Controller
@@ -18,8 +19,15 @@ class FavouriteController extends Controller
         try {
             if (isset($id)) {
                 $food = Favourite::where('id', $id)->first();
+                $food->user = User::where('id',$food->user_id)->first();
+                unset($food->user_id);
             } else {
                 $food = Favourite::all();
+                foreach ($food as $data) {
+                    $user_id = $data->user->id;
+                    unset($data->user_id);
+                    $data->user = User::where('id', $user_id)->first();
+                }
             }
             return new PostResource(true, "data Food ditemukan", $food);
         } catch (\Throwable $th) {

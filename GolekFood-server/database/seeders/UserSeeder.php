@@ -27,7 +27,8 @@ class UserSeeder extends Seeder
                 'email' => 'ade@gmail.com',
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
-                'roles_id' => rand(1,2)
+                'roles_id' => rand(1,2),
+                // 'subscription' => fake()->randomElement(['-', 'Monthly', 'Yearly'])
                 
             ],
             [
@@ -35,8 +36,8 @@ class UserSeeder extends Seeder
                 'email' => 'anas@gmail.com',
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
-                'roles_id' => rand(1,2)
-                
+                'roles_id' => rand(1,2),
+                // 'subscription' => fake()->randomElement(['-', 'Monthly', 'Yearly'])
             ],
             [
                 'name' => 'Ken Diani',
@@ -44,7 +45,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
                 'roles_id' => rand(1,2),
-                
+                // 'subscription' => fake()->randomElement(['-', 'Monthly', 'Yearly'])
             ],
             [
                 'name' => 'Zaky',
@@ -52,7 +53,8 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
                 'roles_id' => rand(1,2),
-            
+                // 'subscription' => fake()->randomElement(['-', 'Monthly', 'Yearly'])
+
             ],
             [
                 'name' => 'Arifin',
@@ -60,9 +62,10 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
                 'roles_id' => rand(1,2),
-        
+                // 'subscription' => fake()->randomElement(['-', 'Monthly', 'Yearly'])
             ],
         ];
+
         foreach ($data as $d) {
             $d['created_at'] = Carbon::now()->format('Y-m-d H:i:s');
             $d['updated_at'] = Carbon::now()->format('Y-m-d H:i:s');
