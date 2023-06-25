@@ -107,7 +107,7 @@ Route::controller(UserSubsController::class)->group(function(){
 
 //Discover Food
 Route::post('/discover-food', [FavouriteController::class, 'discoverFood']);
-Route::post('/discover-food-adv', [FavouriteController::class, 'discoverFoodAdv']);
+Route::post('/discover-food-adv', [FavouriteController::class, 'discoverFoodAdv'])->middleware('auth:sanctum');
 
 Route::post('/discover-food-public', [FavouriteController::class, 'discoverFoodPublic']);
 Route::post('/discover-food-adv-public', [FavouriteController::class, 'discoverFoodAdvPublic']);

@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UserSubsController extends Controller
 {
-
     public function getUserSubs($id = null)
     {
         try {
@@ -38,7 +37,7 @@ class UserSubsController extends Controller
             ];
             $validation = Validator::make($request->all(), $rules);
             if ($validation->fails()) {
-                return new PostResource(false, "Feedback gagal ditambahkan", $validation->errors()->all());
+                return new PostResource(false, "Subscription gagal ditambahkan", $validation->errors()->all());
             }
             $user = User::where('id', $request->user_id)->first();
             if (!$user) {

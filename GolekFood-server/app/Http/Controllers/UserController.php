@@ -18,6 +18,7 @@ class UserController extends Controller
                 $user = User::where('id', $id)->first();
             } else {
                 $user = User::all();
+
             }
             return new PostResource(true, "data User ditemukan", $user);
         } catch (\Throwable $th) {
