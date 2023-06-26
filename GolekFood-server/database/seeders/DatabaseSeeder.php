@@ -33,12 +33,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesSeeder::class,
             UserSeeder::class,
-            UserSubsSeeder::class
+            UserSubsSeeder::class,
+            NewsSeeder::class
         ]);
 
         Feedback::factory(20)->create();
         Favourite::factory(20)->create();
-        News::factory(20)->create();
         SurveyResult::factory(100)->create();
     }
 }

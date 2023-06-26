@@ -51,6 +51,7 @@ class FeedbackController extends Controller
             } else {
                 $rules = [
                     'user_id' => 'required',
+                    'subject' => 'required',
                     'content' => 'required'
                 ];
                 $validation = Validator::make($request->all(), $rules);
@@ -64,6 +65,7 @@ class FeedbackController extends Controller
 
                 $data = [
                     'user_id' => $request->user_id,
+                    'subject' => $request->subject,
                     'content' => $request->content
                 ];
                 $feedback = Feedback::create($data);
@@ -80,6 +82,7 @@ class FeedbackController extends Controller
         try {
             $data = [
                 'id_feedback' => $request->id_feedback,
+                'subject' => $request->subject,
                 'content' => $request->content
             ];
             $feedback = Feedback::where('id', $request->id_feedback)->first();

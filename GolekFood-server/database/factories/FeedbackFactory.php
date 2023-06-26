@@ -19,6 +19,7 @@ class FeedbackFactory extends Factory
         return [
             //
             'user_id' => rand(1,5),
+            'subject' => fake()->sentence(),
             'content' => fake()->sentence()
         ];
     }
