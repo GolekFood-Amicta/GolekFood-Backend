@@ -108,5 +108,4 @@ class FeedbackController extends Controller
             return new PostResource(false, "Data Feedback Gagal dihapus");
         }
     }
-
 }
