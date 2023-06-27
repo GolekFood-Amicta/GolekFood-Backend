@@ -7,10 +7,13 @@ namespace Database\Seeders;
 use App\Models\News;
 use App\Models\User;
 use App\Models\Feedback;
+use App\Models\UserSubs;
 use App\Models\Favourite;
 use App\Models\SurveyResult;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\RolesSeeder;
+use Database\Seeders\UserSubsSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,11 +33,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesSeeder::class,
             UserSeeder::class,
+            UserSubsSeeder::class,
+            NewsSeeder::class
         ]);
 
         Feedback::factory(20)->create();
         Favourite::factory(20)->create();
-        News::factory(20)->create();
         SurveyResult::factory(100)->create();
     }
 }

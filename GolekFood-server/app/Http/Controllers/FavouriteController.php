@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\UserSubs;
 use App\Models\Favourite;
-use App\Http\Resources\PostResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreFavouriteRequest;
 use App\Http\Requests\UpdateFavouriteRequest;
-use App\Models\User;
-use Illuminate\Support\Facades\Http;
 
 class FavouriteController extends Controller
 {
@@ -164,10 +168,22 @@ class FavouriteController extends Controller
     public function discoverFoodAdv(Request $request)
     {
         try {
+            if (!Auth::check()) {
+                return new PostResource(false, "unauthenticated");
+            }
+            
+            $subs = UserSubs::where('user_id', $request->user()->id)->latest()->first();
+            
+            $currentDate = Carbon::now();
+
+            if ($currentDate->lt($subs['subscription_start']) || $currentDate->gt($subs['subscription_end'])) {
+                // Jika tanggal saat ini sebelum tanggal mulai atau setelah tanggal berakhir
+                return new PostResource(false, "subscription telah habis");
+            }
+
             $url = "http://34.101.68.137:5000/advpredict"; // Ganti dengan URL API yang sesuai
     
             $data = [
-                "user_id" => $request->user_id,
                 "energi" => $request->energi,
                 "protein" => $request->protein,
                 "lemak" => $request->lemak,
@@ -182,7 +198,7 @@ class FavouriteController extends Controller
 
             // Menambahkan key "is_favourite" pada setiap data
             $recomWithFavourite = array_map(function ($item) use ($request) {
-                $item['is_favourite'] = Favourite::where('user_id', $request->user_id)->where('food_id', $item['id_food'])->exists();
+                $item['is_favourite'] = Favourite::where('user_id', $request->user()->id)->where('food_id', $item['id_food'])->exists();
                 return $item;
             }, $recom);
         

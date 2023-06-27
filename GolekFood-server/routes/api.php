@@ -6,6 +6,8 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SurveyResultController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserSubsController;
+use App\Models\UserSubs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -92,9 +94,33 @@ Route::controller(SurveyResultController::class)->group(function(){
 });
 
 
+//User Subs
+Route::controller(UserSubsController::class)->group(function(){
+    Route::prefix('/user-subs')->group(function (){
+        Route::get('/', 'getUserSubs');
+        Route::get('/{id}', 'getUserSubs');
+    });
+
+    Route::prefix('/request-subscription')->group(function(){
+        Route::post('/', 'requestUserSubs');
+    });
+
+    Route::prefix('/approve-subscription')->group(function(){
+        Route::put('/', 'approveUserSubs');
+    });
+    
+    Route::prefix('/decline-subscription')->group(function(){
+        Route::post('/', 'declineUserSubs');
+    });
+
+
+});
+
+
+
 //Discover Food
 Route::post('/discover-food', [FavouriteController::class, 'discoverFood']);
-Route::post('/discover-food-adv', [FavouriteController::class, 'discoverFoodAdv']);
+Route::post('/discover-food-adv', [FavouriteController::class, 'discoverFoodAdv'])->middleware('auth:sanctum');
 
 Route::post('/discover-food-public', [FavouriteController::class, 'discoverFoodPublic']);
 Route::post('/discover-food-adv-public', [FavouriteController::class, 'discoverFoodAdvPublic']);

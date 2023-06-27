@@ -66,7 +66,6 @@ class AuthenticationController extends Controller
         $rules = [
             'email' => 'required|email|unique:users',
             'name' => 'required|min:4|max:32',
-            'address' => 'required|min:4|max:32',
             'password' => 'required|min:6|confirmed',
             'roles_id' => 'required',
 
@@ -83,10 +82,6 @@ class AuthenticationController extends Controller
             'password.min'          => 'Password minimal 6 karakter',
             'password.confirmed'    => 'Password tidak sama dengan konfirmasi password',
             'roles_id.required'     => 'Roles tidak tersedia',
-            'address.required' => 'Alamat wajib diisi',
-            'address.min'      => 'Alamat minimal 4 karakter',
-            'address.max'      => 'Alamat maksimal 32 karakter',
-
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
