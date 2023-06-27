@@ -28,7 +28,8 @@ class UserSubsController extends Controller
         }
     }
 
-    public function addUserSubs(Request $request)
+
+     public function requestUserSubs(Request $request)
     {
         try {
             $rules = [
@@ -44,24 +45,9 @@ class UserSubsController extends Controller
                 return new PostResource(false, "User tidak ditemukan");
             }
 
-            if(($request->subscription) == "Mingguan"){
-                $subscription_end = Carbon::now()->addDays(7);
-            }
-
-            if(($request->subscription) == "Bulanan"){
-                $subscription_end = Carbon::now()->addMonth();
-            }
-
-            if(($request->subscription) == "Tahunan"){
-                $subscription_end = Carbon::now()->addYear();
-            }
-
-
             $data = [
                 'user_id' => $request->user_id,
                 'subscription' => $request->subscription,
-                'subscription_start' => Carbon::now(),
-                'subscription_end' => $subscription_end
             ];
             $feedback = UserSubs::create($data);
 
@@ -71,4 +57,49 @@ class UserSubsController extends Controller
             return new PostResource(false, "subscription gagal ditambahkan");
         }
     }
+    
+
+    // public function addUserSubs(Request $request)
+    // {
+    //     try {
+    //         $rules = [
+    //             'user_id' => 'required',
+    //             'subscription' => 'required'
+    //         ];
+    //         $validation = Validator::make($request->all(), $rules);
+    //         if ($validation->fails()) {
+    //             return new PostResource(false, "Subscription gagal ditambahkan", $validation->errors()->all());
+    //         }
+    //         $user = User::where('id', $request->user_id)->first();
+    //         if (!$user) {
+    //             return new PostResource(false, "User tidak ditemukan");
+    //         }
+
+    //         if(($request->subscription) == "Mingguan"){
+    //             $subscription_end = Carbon::now()->addDays(7);
+    //         }
+
+    //         if(($request->subscription) == "Bulanan"){
+    //             $subscription_end = Carbon::now()->addMonth();
+    //         }
+
+    //         if(($request->subscription) == "Tahunan"){
+    //             $subscription_end = Carbon::now()->addYear();
+    //         }
+
+
+    //         $data = [
+    //             'user_id' => $request->user_id,
+    //             'subscription' => $request->subscription,
+    //             'subscription_start' => Carbon::now(),
+    //             'subscription_end' => $subscription_end
+    //         ];
+    //         $feedback = UserSubs::create($data);
+
+
+    //         return new PostResource(true, "subscription berhasil ditambahkan", $feedback);
+    //     } catch (\Throwable $th) {
+    //         return new PostResource(false, "subscription gagal ditambahkan");
+    //     }
+    // }
 }

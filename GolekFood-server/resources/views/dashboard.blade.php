@@ -24,7 +24,11 @@
                     </div>
                 @endif
                     <div class="card-body">
+                        //buatkan card untuk menampilan jumlah data feedback, jumlah data news, jumlah user yang terdaftar
+                    
                         
+
+
                     </div>
                 </div>
             </div>

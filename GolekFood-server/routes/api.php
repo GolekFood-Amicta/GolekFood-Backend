@@ -99,8 +99,21 @@ Route::controller(UserSubsController::class)->group(function(){
     Route::prefix('/user-subs')->group(function (){
         Route::get('/', 'getUserSubs');
         Route::get('/{id}', 'getUserSubs');
-        Route::post('/', 'addUserSubs');
     });
+
+    Route::prefix('/request-subscription')->group(function(){
+        Route::post('/', 'requestUserSubs');
+    });
+
+    Route::prefix('/approve-subscription')->group(function(){
+        Route::put('/', 'approveUserSubs');
+    });
+    
+    Route::prefix('/decline-subscription')->group(function(){
+        Route::post('/', 'declineUserSubs');
+    });
+
+
 });
 
 

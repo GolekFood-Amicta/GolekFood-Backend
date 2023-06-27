@@ -48,7 +48,7 @@
                                             <th>Email</th>
                                             <th>Subject</th>
                                             <th>Content</th>
-                                            <th>Aksi</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,10 +67,14 @@
                                             </tr>
                                         @endforelse
 
+                                        
 
                                     </tbody>
 
                                 </table>
+
+                                //MAKE ONE TABLE  
+                                
 
                                 <div class="p-3">
                                     {!! $dataFeedback->render() !!}
