@@ -39,8 +39,9 @@
                                             <th>Subscription</th>
                                             <th>Bukti</th>
                                             <th>Status</th>
-                                            <th>Tanggal</th>
-                                            <th>Aksi</th>
+                                            <th>Tanggal Awal Subs</th>
+                                            <th>Tanggal Berakhir Subs</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,45 +64,13 @@
                                                 </td>
                                                 @endif
 
-                                                <td>{{ $subscription->created_at->format('d/m/Y') }}</td>
+                                                <td>{{ $subscription->subscription_start }}</td>
+                                                <td>{{ $subscription->subscription_end }}</td>
 
 
-
-                                                <td>
-                                                    <div class="container">
-                                                        <div class="row justify-content-start">
-                                                            <div class=" px-1 py-1">
-
-                                                                
-                                                                <a href=" route('list-pasien.edit', ['list_pasien' => $pasien->id]) }}"
-                                                                    class="btn btn-warning">
-                                                                    <i class="bi bi-pencil text-white">Approve Subscription</i>
-                                                                </a>
-
-
-                                                            </div>
-                                                            <div class=" px-1 py-1">
-                                                                <form
-                                                                    action=" route('list-pasien.destroy', ['list_pasien' => $pasien->id]) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-
-                                                                    <button class="btn btn-danger"
-                                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data Pasien ini?')">
-                                                                        <i class="bi bi-trash3 ">Decline Subscription</i>
-                                                                    </button>
-
-
-                                                                </form>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                
                                                
-                                                </td>
+                                                
                                             </tr>
                                         @empty
                                             <tr>

@@ -72,11 +72,18 @@
                                                         <div class="row justify-content-start">
                                                             <div class=" px-1 py-1">
 
-                                                                
-                                                                <a href=" route('list-pasien.edit', ['list_pasien' => $pasien->id]) }}"
-                                                                    class="btn btn-warning">
-                                                                    <i class="bi bi-pencil text-white">Approve Subscription</i>
-                                                                </a>
+                                                                <form action="{{ route('list-usersubs.update', ['list_usersub' => $subscription->id]) }}"
+                                                                    method="post">
+
+                                                                    @csrf
+                                                                    @method('put')
+                                                                    <button class="btn btn-success"
+                                                                        onclick="return confirm('Apakah Anda yakin ingin Approve subscription ini?')">
+                                                                        <i class="bi bi-check-circle text-white"> Approve Subscription</i>
+                                                                    </button>
+                                                                </form>
+
+                                                       
 
 
                                                             </div>

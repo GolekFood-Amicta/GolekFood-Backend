@@ -56,7 +56,10 @@ Route::resource('/list-survey', ListSurveyController::class)->names([
 //usersubs
 Route::resource('/list-usersubs', ListUserSubs::class)->names([
     'index' => 'list-usersubs',
+    // 'update' => 'update-usersubs',
 ]);
 
 Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list-queuesubs');
+
+
 //antrean
