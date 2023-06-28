@@ -17,20 +17,33 @@ class UserSubsSeeder extends Seeder
         $data = [
             [
                 'user_id' => 1,
-                'subscription' => 'Mingguan'
-                // 'subscription' => fake()->randomElement(['-', 'Monthly', 'Yearly'])
+                'subscription' => 'Mingguan',
+                'status' => 'Active',
+                'subscription_start' => Carbon::now()->format('Y-m-d H:i:s'),
+                'subscription_end' => Carbon::now()->addDays(7)->format('Y-m-d H:i:s')
                 
             ],
             [
                 'user_id' => 5,
-                'subscription' => 'Mingguan'
-                // 'subscription' => 
+                'subscription' => 'Mingguan',
+                'status' => 'Active',
+                'subscription_start' => Carbon::now()->format('Y-m-d H:i:s'),
+                'subscription_end' => Carbon::now()->addDays(7)->format('Y-m-d H:i:s')
+            ],
+            [
+                'user_id' => 3,
+                'subscription' => 'Bulanan',
+                'status' => 'Inactive',
+            ],
+            [
+                'user_id' => 2,
+                'subscription' => 'Bulanan',
+                'status' => 'Inactive',
             ],
         ];
 
         foreach ($data as $d) {
-            $d['subscription_start'] = Carbon::now()->format('Y-m-d H:i:s');
-            $d['subscription_end'] = Carbon::now()->addDays(7)->format('Y-m-d H:i:s');
+            $d['created_at'] = Carbon::now()->format('Y-m-d H:i:s');
             DB::table('user_subs')->insert($d);
         }
     }

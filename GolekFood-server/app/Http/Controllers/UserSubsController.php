@@ -48,6 +48,7 @@ class UserSubsController extends Controller
             $data = [
                 'user_id' => $request->user_id,
                 'subscription' => $request->subscription,
+                'status' => 'Inactive',
             ];
             $feedback = UserSubs::create($data);
 
