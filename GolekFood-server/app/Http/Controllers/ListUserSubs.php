@@ -86,8 +86,13 @@ class ListUserSubs extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserSubs $userSubs)
+    public function destroy($id)
     {
         //
+        
+    // Lakukan operasi penghapusan data
+    UserSubs::destroy($id);
+
+    return redirect('/list-queuesubs')->with('success','Antreans telah berhasil dihapus');
     }
 }

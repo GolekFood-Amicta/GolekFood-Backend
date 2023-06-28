@@ -89,13 +89,13 @@
                                                             </div>
                                                             <div class=" px-1 py-1">
                                                                 <form
-                                                                    action=" route('list-pasien.destroy', ['list_pasien' => $pasien->id]) }}"
+                                                                    action=" {{ route('list-usersubs.destroy', ['list_usersub' => $subscription->id]) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
 
                                                                     <button class="btn btn-danger"
-                                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data Pasien ini?')">
+                                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data Antrean ini?')">
                                                                         <i class="bi bi-trash3 ">Decline Subscription</i>
                                                                     </button>
 
@@ -112,7 +112,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="4" class="text-center">empty</td>
+                                                <td colspan="7" class="text-center">empty</td>
                                             </tr>
                                         @endforelse
 
