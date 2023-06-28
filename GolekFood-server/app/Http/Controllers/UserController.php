@@ -36,6 +36,11 @@ class UserController extends Controller
                 return new PostResource(false, "User tidak ditemukan");
             }
 
+            $user = User::where('id', $id)->first();
+            if (!Hash::check($request->password, $user->password, [])) {
+                return new PostResource(false, "password anda salah");
+            }
+
             $avatar = $user->avatar;
              if($request->file ){
                  $fileName = $this->generateRandomString();
