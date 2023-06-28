@@ -88,6 +88,8 @@ class AuthenticationController extends Controller
         if ($validator->fails()) {
             return new PostResource(false, $validator->errors()->first());
         }
+
+        
         $data = [
             'email' => strtolower($request->email),
             'name' => strtolower($request->name),
@@ -95,6 +97,8 @@ class AuthenticationController extends Controller
             'password' => Hash::make($request->password),
             'roles_id' => $request->roles_id,
         ];
+
+        
         try {
             $user = User::create($data);
             return new PostResource(true, "User berhasil teregistrasi", $user);
