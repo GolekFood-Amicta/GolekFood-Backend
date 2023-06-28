@@ -32,9 +32,15 @@
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
-            <a class="nav-link " href=" route('list-parameter') ">
+            <a class="nav-link " href=" {{ route('list-queuesubs') }} ">
                 <i class="bi bi-grid"></i>
                 <span>Data Antrean Subscription</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link " href=" {{ route('list-usersubs') }} ">
+                <i class="bi bi-grid"></i>
+                <span>Data Subscription</span>
             </a>
         </li><!-- End Dashboard Nav -->
         

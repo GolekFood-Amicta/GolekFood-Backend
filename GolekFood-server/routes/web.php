@@ -3,12 +3,11 @@ use App\Http\Controllers\{
     ListFeedbackController,
     ListNewsController,
     ListSurveyController,
+    ListUserSubs,
     LoginController,
     LogoutController
 };
-// use App\Http\Controllers\ListFeedbackController;
-// use App\Http\Controllers\ListNewsController;
-// use App\Http\Controllers\ListSurveyController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,17 +35,28 @@ Route::get('/dashboard-admin', function(){
     return view('dashboard');
 })->name('dashboard');
 
+
+//feedback
 Route::resource('/list-feedback', ListFeedbackController::class)->names([
     'index' => 'list-feedback',
 ]);
 
+Route::get('/list-feedback-search', [ListFeedbackController::class, 'search'])->name('search-feedback');
+
+//news
 Route::resource('/list-news', ListNewsController::class)->names([
     'index' => 'list-news',
 ]);
 
+//survey
 Route::resource('/list-survey', ListSurveyController::class)->names([
     'index' => 'list-survey',
 ]);
 
-Route::get('/list-feedback-search', [ListFeedbackController::class, 'search'])->name('search-feedback');
-// iteration
+//usersubs
+Route::resource('/list-usersubs', ListUserSubs::class)->names([
+    'index' => 'list-usersubs',
+]);
+
+Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list-queuesubs');
+//antrean

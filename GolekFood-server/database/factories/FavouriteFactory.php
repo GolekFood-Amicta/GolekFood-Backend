@@ -19,8 +19,20 @@ class FavouriteFactory extends Factory
         return [
             //
             'user_id' => rand(1,5),
-            'food_id' => rand(1,1000),
-            'foodname' => fake()->firstName() . 'food',
+            'food_id' => rand(1,10),
+            'foodname' => fake()->randomElement([
+                'Abon',
+                'Abon haruwan',
+                'Agar-agar',
+                'Akar tonjong segar',
+                'Aletoge segar',
+                'Alpukat segar',
+                'Ampas kacang hijau',
+                'Ampas Tahu',
+                'Ampas tahu kukus',
+                'Ampas tahu mentah',
+                'Anak sapi daging gemuk segar'
+            ]),
             'fat' => rand(1,1000),
             'protein' => rand(1,1000),
             'carbohydrate' => rand(1,1000),

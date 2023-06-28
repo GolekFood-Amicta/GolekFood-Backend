@@ -12,13 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('favourites', function (Blueprint $table) {
-            // user_id
-            // foodname
-            // fat
-            // protein
-            // carbohydrate
-            // calories
-            // image
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('food_id');
@@ -29,6 +22,7 @@ return new class extends Migration
             $table->string('calories');
             $table->string('image')->nullable();
             $table->timestamps();
+            
         });
     }
 

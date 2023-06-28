@@ -12,7 +12,13 @@ class UserSubs extends Model
     protected $fillable = [
         'user_id',
         'subscription',
+        'status',
         'subscription_start',
         'subscription_end'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
