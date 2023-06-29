@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\{
+    DashboardController,
     ListFeedbackController,
     ListNewsController,
     ListSurveyController,
@@ -31,10 +32,7 @@ Route::post('/login-admin', [LoginController::class,'authenticate'])->name('post
 Route::post('/logout-admin', [LogoutController::class,'logout'])->name('logout');
 
 
-Route::get('/dashboard-admin', function(){
-    return view('dashboard');
-})->name('dashboard');
-
+Route::get('/dashboard-admin', [DashboardController::class, 'index'])->name('dashboard');
 
 //feedback
 Route::resource('/list-feedback', ListFeedbackController::class)->names([

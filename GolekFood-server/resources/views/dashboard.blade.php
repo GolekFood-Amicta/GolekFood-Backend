@@ -24,10 +24,131 @@
                     </div>
                 @endif
                     <div class="card-body">
-                        //buatkan card untuk menampilan jumlah data feedback, jumlah data news, jumlah user yang terdaftar
-                    
-                        
+                       
+                        <div class="row">
+                            <!-- Sales Card -->
+                            <div class="col-xxl-4 col-md-6 mt-5">
+                                <div class="card info-card sales-card">
 
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total <span>| User</span></h5>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-person"></i>
+                                            </div>
+                                            <div class="ps-3">
+                                                <h6> {{ $info['totalUser'] }} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- End Sales Card -->
+                            
+                        </div><!-- End Sales Card -->
+
+                        <div class="row">
+                            <!-- Sales Card -->
+                            <div class="col-xxl-4 col-md-6 mt-5">
+                                <div class="card info-card sales-card">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total <span class="text">|
+                                                Antrean Subscription</span></h5>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-person"></i>
+                                            </div>
+                                            <div class="ps-3">
+                                                <h6 class="text"> {{ $info['subscription']['inactive'] }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- End Sales Card -->
+                            <div class="col-xxl-4 col-md-6 mt-5">
+                                <div class="card info-card sales-card">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total <span>| Subscription</span></h5>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-person"></i>
+                                            </div>
+                                            <div class="ps-3">
+                                                <h6> {{ $info['subscription']['active'] }} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- End Sales Card -->
+                        </div>
+                        <div class="row">
+                            <!-- Sales Card -->
+                            <div class="col-xxl-4 col-md-6 mt-5">
+                                <div class="card info-card sales-card">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total <span>| News</span></h5>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-newspaper"></i>
+                                            </div>
+                                            <div class="ps-3">
+                                                <h6> {{ $info['features']['totalNews'] }} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- End Sales Card -->
+                            <!-- Sales Card -->
+                            <div class="col-xxl-4 col-md-6 mt-5">
+                                <div class="card info-card sales-card">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total <span>| Feedback</span></h5>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-arrow-repeat"></i>
+                                            </div>
+                                            <div class="ps-3">
+                                                <h6> {{ $info['features']['totalFeedback'] }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- End Sales Card -->
+                            <!-- Sales Card -->
+                            <div class="col-xxl-4 col-md-6 mt-5">
+                                <div class="card info-card sales-card">
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total <span>| Hasil Survey</span></h5>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-broadcast"></i>
+                                            </div>
+                                            <div class="ps-3">
+                                                <h6> {{ $info['features']['totalSurvey'] }} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- End Sales Card -->
+
+
+                        </div>
 
                     </div>
                 </div>
