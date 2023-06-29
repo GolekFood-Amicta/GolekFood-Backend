@@ -72,7 +72,7 @@
                                                 <td>
                                                     <div class="row justify-content-start">
                                                         <div class="px-2 py-1">
-                                                            <a href=" route('list-bidang.edit', ['list_bidang' => $bidang->id]) }}"
+                                                            <a href="{{ route('list-news.edit', ['list_news' => $news->id]) }}"
                                                                 type="button" class="btn btn-primary">
                                                                 <i class="bi bi-pencil text-white"> Perbaharui Data</i>
                                                             </a>

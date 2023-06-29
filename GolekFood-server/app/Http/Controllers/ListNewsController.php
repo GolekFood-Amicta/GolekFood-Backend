@@ -50,9 +50,11 @@ class ListNewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(News $news)
+    public function edit($id)
     {
         //
+        $news = News::find($id);
+        return view('adminpage.newspage.editnews', ['news' => $news]);
     }
 
     /**
