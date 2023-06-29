@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,17 +28,16 @@ class UserController extends Controller
     }
 
 
-    public function updateUser(Request $request, $id)
+    public function updateUser(Request $request)
     {
         try {
-
-            $user = User::where('id', $id)->first();
-            if (!$user) {
-                return new PostResource(false, "User tidak ditemukan");
+            if (!Auth::check()) {
+                return new PostResource(false, "unauthenticated");
             }
+            $user = $request->user();
+            $user = User::where('id',$user->id)->first();
 
-            $user = User::where('id', $id)->first();
-            if (!Hash::check($request->password, $user->password, [])) {
+            if(!Hash::check($request->password, $user->password)){
                 return new PostResource(false, "password anda salah");
             }
 
@@ -50,21 +50,20 @@ class UserController extends Controller
                 if($user->avatar != 'default-profile.png'){
                     Storage::delete('image/'.$user->avatar);
                 }
-
                  Storage::putFileAs('image', $request->file, $avatar);
              }
 
+
              $data = [
-                'id_user' => $request->id_user,
-                'email' => strtolower($request->email),
                 'name' => strtolower($request->name),
+                'email' => strtolower($request->email),
                 'address' => $request->address,
                 'password' => Hash::make($request->password),
-                'roles_id' => $request->roles_id,
                 'avatar' => $avatar
             ];             
 
             $user->update($data);
+
             return new PostResource(true, "data User berhasil diubah", $user);
         } catch (\Throwable $th) {
             return new PostResource(false, "data User gagal diubah");

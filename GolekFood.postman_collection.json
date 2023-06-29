@@ -23,7 +23,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "// isi bagian authorization dengan token login yang didapatkan\r\n// contoh : \"Bearer \"+\"2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\"\r\n//Bearer 2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\r\n\r\n{\r\n    \"email\" : \"arifin@gmail.com\",\r\n    \"password\" : \"password\"\r\n}\r\n",
+							"raw": "// isi bagian authorization dengan token login yang didapatkan\r\n// contoh : \"Bearer \"+\"2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\"\r\n//Bearer 2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\r\n\r\n{\r\n    \"email\" : \"zaky@gmail.com\",\r\n    \"password\" : \"password\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -207,6 +207,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 3|5CJz346NEALQObY3sV8UWHQgw6df6X1kLSjfDOCR",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -215,11 +220,11 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/arifi/Downloads/114f2c31-2b04-4fa4-bce0-3d5266a7ef6b.png"
+									"src": "/C:/Users/arifi/Downloads/pngwing.com.png"
 								},
 								{
 									"key": "name",
-									"value": "Restu",
+									"value": "Restu Putra",
 									"type": "text"
 								},
 								{
@@ -233,20 +238,25 @@
 									"type": "text"
 								},
 								{
-									"key": "roles_id",
-									"value": "1",
+									"key": "email",
+									"value": "Zaky@gmail.com",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/user/1",
+							"raw": "{{url}}/user?_method=PUT",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
-								"1"
+								"user"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PUT"
+								}
 							]
 						}
 					},
@@ -275,6 +285,107 @@
 								"user"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserSubscription",
+			"item": [
+				{
+					"name": "Get All UserSubscription",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user-subs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-subs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get UserSubscription by user Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user-subs/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-subs",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1. Request Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\" : 5,\r\n    \"subscription\" : \"Mingguan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/request-subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"request-subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Approve Subscription",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "3. Decline Subscription",
+					"request": {
+						"method": "DELETE",
+						"header": []
 					},
 					"response": []
 				}
@@ -414,11 +525,16 @@
 												"key": "Accept",
 												"value": "application/json",
 												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer 4|5H2PZQhKjTprCjljBu8SS9SU2uzpwRu7EU391kQl",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"user_id\" : 1,\r\n    \"energi\": 200,\r\n    \"protein\": 10.1,\r\n    \"lemak\": 15.1,\r\n    \"karbohidrat\": 120\r\n}",
+											"raw": "//wajib pasang token auth di body\r\n{\r\n    \"energi\": 200,\r\n    \"protein\": 10.1,\r\n    \"lemak\": 15.1,\r\n    \"karbohidrat\": 120\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -520,7 +636,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_id\" : 3, \r\n    \"content\" : \"mantap\"\r\n}",
+							"raw": "{\r\n    \"user_id\" : 3, \r\n    \"subject\" : \"done\",\r\n    \"content\" : \"mantap\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -545,19 +661,13 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "id_feedback",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "content",
-									"value": "mantap",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"id_feedback\" : 10,\r\n    \"user_id\" : 3, \r\n    \"subject\" : \"done\",\r\n    \"content\" : \"mantap\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/feedback",

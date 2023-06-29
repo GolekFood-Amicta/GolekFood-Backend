@@ -85,8 +85,9 @@ class FavouriteController extends Controller
                     'calories' => $request->calories,
                 ];
                 $favourite = Favourite::create($data);
+                $favourite['is_favourite'] = true;
             }
-
+               
             return new PostResource(true, "Favourite berhasil ditambahkan", $favourite);
         } catch (\Throwable $th) {
             return new PostResource(false, "Favourite gagal ditambahkan");
@@ -112,6 +113,9 @@ class FavouriteController extends Controller
             }
 
             $food->update($data);
+
+            
+
             return new PostResource(true, "data Favourite berhasil diubah", $food);
         } catch (\Throwable $th) {
             return new PostResource(false, "data Favourite gagal diubah");

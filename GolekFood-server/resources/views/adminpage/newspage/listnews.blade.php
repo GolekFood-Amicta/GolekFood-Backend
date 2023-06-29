@@ -27,6 +27,11 @@
                                 </div>
                             @endif
 
+                            <div class="py-3">
+                                <a class="btn btn-success" href="list-bidang/create" role="button">
+                                    <i class="bi bi-plus">Tambah News</i>
+                                </a>
+                            </div>
 
 
                             <div class="row p-3 border border-primary ">
@@ -48,7 +53,37 @@
                                                 <td>{{ $news->title }}</td>
                                                 <td>{{ $news->user->email }}</td>
                                                 <td>{{ $news->created_at }}</td>   
-                                                <td>Ini button</td>
+                                                
+                                                <td>
+                                                    <div class="row justify-content-start">
+                                                        <div class="px-2 py-1">
+                                                            <a href=" route('list-bidang.edit', ['list_bidang' => $bidang->id]) }}"
+                                                                type="button" class="btn btn-primary">
+                                                                <i class="bi bi-pencil text-white"> Perbaharui Data</i>
+                                                            </a>
+                                                        </div>
+
+                                                        <div
+                                                            class=" px-2 py-1
+                                                        ">
+                                                            <form
+                                                                action=" route('list-bidang.destroy', ['list_bidang' => $bidang->id]) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+
+                                                                <button class="btn btn-danger"
+                                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus bidang ini?')">
+                                                                    <i class="bi bi-trash3"> Hapus Data</i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+
+                                                </td>
+                                                
+
                                                 </td>
                                             </tr>
                                         @empty

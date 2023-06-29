@@ -20,8 +20,19 @@ class NewsController extends Controller
         try {
             if (isset($id)) {
                 $news = News::where('id', $id)->first();
+                // foreach ($news as $data) {
+                //     $user = User::where('id', $data->user_id)->first();
+                //     unset($data->user_id);
+                //     $data->author = $user;
+                // }
+                
             } else {
                 $news = News::paginate(5);
+                foreach ($news as $data) {
+                    $user = User::where('id', $data->user_id)->first();
+                    unset($data->user_id);
+                    $data->author = $user;
+                }
             }   
             return new PostResource(true, "data News ditemukan", $news);
         } catch (\Throwable $th) {
@@ -32,8 +43,13 @@ class NewsController extends Controller
     public function getNewsByIdUser($id)
     {
         try {
-            $feedback = News::where('user_id', $id)->get();
-            return new PostResource(true, "data news ditemukan", $feedback);
+            $news = News::where('user_id', $id)->get();
+            foreach ($news as $data) {
+                $user = User::where('id', $data->user_id)->first();
+                unset($data->user_id);
+                $data->author = $user;
+            }
+            return new PostResource(true, "data news ditemukan", $news);
         } catch (\Throwable $th) {
             return new PostResource(false, "data news tidak ada");
         }

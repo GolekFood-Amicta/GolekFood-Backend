@@ -32,7 +32,7 @@ Route::controller(UserController::class)->group(function(){
     Route::prefix('/user')->group(function (){
         Route::get('/', 'getUser');
         Route::get('/{id}', 'getUser');
-        Route::post('/{id}', 'updateUser');
+        Route::put('/', 'updateUser')->middleware(['auth:sanctum']);
         Route::delete('/', 'deleteUser');
     });
 });

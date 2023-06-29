@@ -25,6 +25,7 @@ class ListNewsController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
