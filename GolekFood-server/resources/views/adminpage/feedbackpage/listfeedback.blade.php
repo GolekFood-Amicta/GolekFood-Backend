@@ -28,7 +28,6 @@
                             @endif
 
 
-
                             <div class="row p-3 border border-primary ">
                                 <form class="py-3 " action="{{ route('search-feedback') }}" method="GET">
                                     <div class="row justify-content-end">

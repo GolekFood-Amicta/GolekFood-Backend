@@ -15,7 +15,7 @@
         <div class="row">
 
             <!-- Left side columns -->
-            <div class="col-lg-12">
+            <div class="col-lg-12"> 
                 <div class="row">
                     <div class="card">
                         <div class="card-body p-3">
@@ -27,10 +27,25 @@
                                 </div>
                             @endif
 
-                            <div class="py-3">
-                                <a class="btn btn-success" href="list-bidang/create" role="button">
-                                    <i class="bi bi-plus">Tambah News</i>
-                                </a>
+                            <div class="row">
+                                <div class="col py-3">
+                                    <a class="btn btn-success" href="{{ route('create-news') }}" role="button">
+                                        <i class="bi bi-plus">Tambah News</i>
+                                    </a>
+                                </div>
+
+                                <div class="col">
+                                    <form class="py-3 " action="{{ route('search-news') }}" method="GET">
+                                        <div class="row justify-content-end">
+                                            <div class="col-md-3">
+                                                <input type="text" name="search" class="form-control"  required/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button class="btn btn-primary" type="submit">Search</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
 
 
@@ -42,8 +57,9 @@
                                             <th>No</th>
                                             <th>Judul</th>
                                             <th>Author</th>
-                                            <th>Tanggal</th>
                                             <th>Aksi</th>
+                                            <th>Tanggal</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -52,7 +68,6 @@
                                                 <td>{{ $dataNews->firstitem() + $key }}</td>
                                                 <td>{{ $news->title }}</td>
                                                 <td>{{ $news->user->email }}</td>
-                                                <td>{{ $news->created_at }}</td>   
                                                 
                                                 <td>
                                                     <div class="row justify-content-start">
@@ -82,13 +97,14 @@
                                                     </div>
 
                                                 </td>
+                                                <td>{{ $news->created_at->diffForHumans(); }}</td>   
                                                 
 
                                                 </td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="4" class="text-center">empty</td>
+                                                <td colspan="5" class="text-center">empty</td>
                                             </tr>
                                         @endforelse
 

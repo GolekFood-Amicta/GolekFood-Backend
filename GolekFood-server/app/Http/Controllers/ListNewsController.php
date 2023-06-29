@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ListNewsController extends Controller
 {
@@ -25,7 +27,7 @@ class ListNewsController extends Controller
     public function create()
     {
         //
-        
+        return view('adminpage.newspage.createnews');
     }
 
     /**
@@ -34,6 +36,7 @@ class ListNewsController extends Controller
     public function store(Request $request)
     {
         //
+        return $request;
     }
 
     /**
@@ -67,4 +70,24 @@ class ListNewsController extends Controller
     {
         //
     }
+
+
+    public function search(Request $request){
+        // Get the search value from the request
+
+        $search = $request->get('search');
+    
+        // Search in the title and body columns from the posts table
+        $data = News::query()->join('users', 'news.user_id', '=', 'users.id')
+        ->select('news.*', 'users.name')
+
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('email', 'LIKE', "%{$search}%")
+            ->orWhere('body', 'LIKE', "%{$search}%")
+            ->simplePaginate(10);
+    
+        // Return the search view with the resluts compacted
+        return view('adminpage.newspage.listnews', ['dataNews' => $data]);
+    }
+
 }

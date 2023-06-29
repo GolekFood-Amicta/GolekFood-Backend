@@ -33,6 +33,9 @@
     <link href="{{ asset('css/style.css')  }}" rel="stylesheet">
 
 
+    <!-- Trix editor -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+
     <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.css" rel="stylesheet" />
 
 
@@ -68,6 +71,13 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>
 
+    <!-- Trix editor -->
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
 
     </body>
 

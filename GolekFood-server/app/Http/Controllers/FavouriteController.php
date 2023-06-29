@@ -202,6 +202,7 @@ class FavouriteController extends Controller
 
             // Menambahkan key "is_favourite" pada setiap data
             $recomWithFavourite = array_map(function ($item) use ($request) {
+                //Jika pada saat ini user sudah pernah memfavoritkan makanan tersebut
                 $item['is_favourite'] = Favourite::where('user_id', $request->user()->id)->where('food_id', $item['id_food'])->exists();
                 return $item;
             }, $recom);

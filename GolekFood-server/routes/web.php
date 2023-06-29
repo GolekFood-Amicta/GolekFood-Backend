@@ -46,7 +46,9 @@ Route::get('/list-feedback-search', [ListFeedbackController::class, 'search'])->
 //news
 Route::resource('/list-news', ListNewsController::class)->names([
     'index' => 'list-news',
+    'create' => 'create-news',
 ]);
+Route::get('/list-news-search', [ListNewsController::class, 'search'])->name('search-news');
 
 //survey
 Route::resource('/list-survey', ListSurveyController::class)->names([
