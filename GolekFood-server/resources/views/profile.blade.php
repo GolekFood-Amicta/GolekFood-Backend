@@ -42,7 +42,7 @@
                                         is-invalid
                                         @enderror
                                         "
-                                            id="alamat" name="alamat">{{ auth()->user()->address }}</textarea>
+                                            id="alamat" name="alamat">{{ $urlAvatar }}</textarea>
 
 
                                         @error('alamat')
@@ -60,7 +60,7 @@
                                     <div class="mb-3">
                                        
                                         <h4>Ganti Avatar</h4>
-                                        <img src="{{ asset('img/profile-img.jpg') }}" alt="..." class="img-thumbnail rounded float-left m-3">
+                                        <img src="{{ $urlAvatar }}" alt="..." class="img-thumbnail rounded float-left m-3">
                                         
                                         <input
                                             class="form-control 

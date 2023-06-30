@@ -7,7 +7,7 @@ use App\Http\Controllers\{
     ListUserSubs,
     LoginController,
     LogoutController,
-    UserProfile
+    UserProfileController
 };
 
 use Illuminate\Support\Facades\Route;
@@ -64,4 +64,4 @@ Route::resource('/list-usersubs', ListUserSubs::class)->names([
 Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list-queuesubs');
 
 //user
-Route::get('/profile', [UserProfile::class, 'index'])->name('profile');
+Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
