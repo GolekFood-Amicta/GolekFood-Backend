@@ -18,8 +18,7 @@
                     <div class="card">
                         <div class="card-body p-3">
 
-                            <form class="row g-3" method="post" action="  route('list-news.store') }}"
-                                enctype="multipart/form-data">
+                            <form class="row g-3" method="post" action="{{route('change-password.store') }}">
                                 @csrf
                                 <div class="col-md-4">
                                     <div class="pb-2">
@@ -30,7 +29,8 @@
 
                                     <div class="pb-2">
                                         <label for="nama" class="form-label">Pasword Lama</label>
-                                        <input type="password" class="form-control
+                                        <input type="password" name="password" id="password"
+                                        class="form-control
                                         @error('password') 
                                         is-invalid
                                         @enderror
@@ -45,7 +45,8 @@
 
                                     <div class="pb-2">
                                         <label for="nama" class="form-label">Password Baru</label>
-                                        <input type="password" class="form-control
+                                        <input type="password" name="password_confirmation" id="password_confirmation"
+                                        class="form-control
                                         @error('password_confirmation') 
                                         is-invalid
                                         @enderror

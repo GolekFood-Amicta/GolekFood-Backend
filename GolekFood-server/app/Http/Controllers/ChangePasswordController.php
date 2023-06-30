@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class ChangePasswordController extends Controller
 {
@@ -30,6 +32,17 @@ class ChangePasswordController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $user = User::find(auth()->user()->id);
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+        
+        return redirect()->route('dashboard')->with('success', 'Password berhasil diubah');
+
     }
 
     /**

@@ -67,7 +67,9 @@ Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list
 
 //user
 Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
-Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password');
+Route::resource('/change-password', ChangePasswordController::class)->names([
+    'index' => 'change-password',
+]);
 
 
 //upgrade roles user
