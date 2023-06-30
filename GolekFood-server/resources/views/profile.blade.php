@@ -18,7 +18,7 @@
                     <div class="card">
                         <div class="card-body p-3">
 
-                            <form class="row g-3" method="post" action="  route('list-news.store') }}"
+                            <form class="row g-3" method="post" action="  {{ route('profile.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-md-4">
@@ -30,22 +30,38 @@
 
                                     <div class="pb-2">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" value="{{ auth()->user()->name }}" class="form-control"
-                                        >
+                                        <input type="text" value="{{ auth()->user()->name }}" class="form-control" name="name" id="name">
+                                        
                                     </div>
 
                                     <div class="pb-2">
-                                        <label for="alamat" class="form-label">Alamat</label>
+                                        <label for="address" class="form-label">Alamat</label>
                                         <textarea type="text"
                                             class="form-control 
-                                        @error('alamat') 
+                                        @error('address') 
                                         is-invalid
                                         @enderror
                                         "
-                                            id="alamat" name="alamat">{{ auth()->user()->address }}</textarea>
+                                            id="address" name="address">{{ auth()->user()->address }}</textarea>
 
 
-                                        @error('alamat')
+                                        @error('address')
+                                            <label class="form-check-label invalid-feedback">
+                                                {{ $message }}
+                                            </label>
+                                        @enderror
+                                    </div>
+
+                                    <div class="pb-2">
+                                        <label for="password" class="form-label">Konfirmasi Password</label>
+                                        <input type="password" name="password" id="password"
+                                        class="form-control
+                                        @error('password') 
+                                        is-invalid
+                                        @enderror
+                                        ">
+
+                                        @error('password')
                                             <label class="form-check-label invalid-feedback">
                                                 {{ $message }}
                                             </label>
@@ -62,11 +78,11 @@
                                         
                                         <input
                                             class="form-control 
-                                            @error('title') 
+                                            @error('avatar') 
                                             is-invalid
                                             @enderror"
-                                            type="file" id="image" name="image">
-                                        @error('body')
+                                            type="file" id="avatar" name="avatar">
+                                        @error('avatar')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>

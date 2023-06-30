@@ -61,12 +61,15 @@ Route::resource('/list-usersubs', ListUserSubs::class)->names([
     'index' => 'list-usersubs',
     // 'update' => 'update-usersubs',
 ]);
+
 //antrean
 Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list-queuesubs');
 
-
 //user
-Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
+Route::resource('/profile', UserProfileController::class)->names([
+    'index' => 'profile',
+]);
+
 Route::resource('/change-password', ChangePasswordController::class)->names([
     'index' => 'change-password',
 ]);

@@ -28,7 +28,7 @@
                                     </div>
 
                                     <div class="pb-2">
-                                        <label for="nama" class="form-label">Pasword Lama</label>
+                                        <label for="nama" class="form-label">Pasword Baru</label>
                                         <input type="password" name="password" id="password"
                                         class="form-control
                                         @error('password') 
@@ -44,7 +44,7 @@
                                     </div>
 
                                     <div class="pb-2">
-                                        <label for="nama" class="form-label">Password Baru</label>
+                                        <label for="nama" class="form-label">Konfirmasi Password Baru</label>
                                         <input type="password" name="password_confirmation" id="password_confirmation"
                                         class="form-control
                                         @error('password_confirmation') 
