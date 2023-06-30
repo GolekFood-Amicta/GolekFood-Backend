@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('container')
     <div class="pagetitle">
-        <h1>Profile</h1>
+        <h1>Change Password</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Profile</li>
@@ -29,52 +29,37 @@
                                     </div>
 
                                     <div class="pb-2">
-                                        <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" value="{{ auth()->user()->name }}" class="form-control"
-                                        >
-                                    </div>
-
-                                    <div class="pb-2">
-                                        <label for="alamat" class="form-label">Alamat</label>
-                                        <textarea type="text"
-                                            class="form-control 
-                                        @error('alamat') 
+                                        <label for="nama" class="form-label">Pasword Lama</label>
+                                        <input type="password" class="form-control
+                                        @error('password') 
                                         is-invalid
                                         @enderror
-                                        "
-                                            id="alamat" name="alamat">{{ auth()->user()->address }}</textarea>
+                                        ">
 
-
-                                        @error('alamat')
+                                        @error('password_confirmation')
                                             <label class="form-check-label invalid-feedback">
                                                 {{ $message }}
                                             </label>
                                         @enderror
                                     </div>
-                                </div>
 
-                                <div class="col-md-3 px-3">
-
-                                    <div class="mb-3">
-                                       
-                                        <h4>Ganti Avatar</h4>
-                                        <img src="{{ $urlAvatar }}" alt="..." class="img-thumbnail rounded float-left m-3">
+                                    <div class="pb-2">
+                                        <label for="nama" class="form-label">Password Baru</label>
+                                        <input type="password" class="form-control
+                                        @error('password_confirmation') 
+                                        is-invalid
+                                        @enderror
+                                        ">
                                         
-                                        <input
-                                            class="form-control 
-                                            @error('title') 
-                                            is-invalid
-                                            @enderror"
-                                            type="file" id="image" name="image">
-                                        @error('body')
-                                            <p class="text-danger">{{ $message }}</p>
+                                        @error('password_confirmation')
+                                            <label class="form-check-label invalid-feedback">
+                                                {{ $message }}
+                                            </label>
                                         @enderror
                                     </div>
-
+            
                                 </div>
-
-
-
+                        
                                 <div class="col-12 py-2">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

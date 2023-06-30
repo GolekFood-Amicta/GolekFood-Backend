@@ -16,6 +16,12 @@
         <li class="nav-item">
             <a class="nav-link " href=" {{ route('list-feedback') }} ">
                 <i class="bi bi-grid"></i>
+                <span>Upgrade User</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link " href=" {{ route('list-feedback') }} ">
+                <i class="bi bi-grid"></i>
                 <span>Data Feedback</span>
             </a>
         </li><!-- End Dashboard Nav -->
@@ -43,6 +49,8 @@
                 <span>Data Subscription</span>
             </a>
         </li><!-- End Dashboard Nav -->
+
+        
         
 
         

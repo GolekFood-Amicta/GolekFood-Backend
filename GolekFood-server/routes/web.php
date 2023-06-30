@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\{
+    ChangePasswordController,
     DashboardController,
     ListFeedbackController,
     ListNewsController,
@@ -63,5 +64,11 @@ Route::resource('/list-usersubs', ListUserSubs::class)->names([
 //antrean
 Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list-queuesubs');
 
+
 //user
 Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
+Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password');
+
+
+//upgrade roles user
+// Route::get('/upgrade-role', [UserProfileController::class, 'upgradeRole'])->name('upgrade-role');
