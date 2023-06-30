@@ -30,6 +30,7 @@ class NewsSeeder extends Seeder
         ];
 
         foreach ($data as $d) {
+            $d['image'] = 'default-image.png';
             $d['created_at'] = Carbon::now()->format('Y-m-d H:i:s');
             $d['updated_at'] = Carbon::now()->format('Y-m-d H:i:s');
             DB::table('news')->insert($d);

@@ -6,7 +6,8 @@ use App\Http\Controllers\{
     ListSurveyController,
     ListUserSubs,
     LoginController,
-    LogoutController
+    LogoutController,
+    UserProfile
 };
 
 use Illuminate\Support\Facades\Route;
@@ -59,8 +60,8 @@ Route::resource('/list-usersubs', ListUserSubs::class)->names([
     'index' => 'list-usersubs',
     // 'update' => 'update-usersubs',
 ]);
-
+//antrean
 Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list-queuesubs');
 
-
-//antrean
+//user
+Route::get('/profile', [UserProfile::class, 'index'])->name('profile');

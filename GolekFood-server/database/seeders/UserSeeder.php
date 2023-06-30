@@ -62,11 +62,12 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
                 'roles_id' => rand(1,2),
-                // 'subscription' => fake()->randomElement(['-', 'Monthly', 'Yearly'])
+               
             ],
         ];
 
         foreach ($data as $d) {
+            $d['avatar'] = 'default-profile.png';
             $d['created_at'] = Carbon::now()->format('Y-m-d H:i:s');
             $d['updated_at'] = Carbon::now()->format('Y-m-d H:i:s');
             DB::table('users')->insert($d);

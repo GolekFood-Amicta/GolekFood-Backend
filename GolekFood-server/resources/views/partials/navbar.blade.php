@@ -25,9 +25,9 @@
                     <hr class="dropdown-divider">
                 </li>
                 <li>
-                    <a class="dropdown-item d-flex align-items-center" href="{{ asset('users-profile.html') }}">
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('profile') }}">
                         <i class="bi bi-gear"></i>
-                        <span>Settings</span>
+                        <span>Profile</span>
                     </a>
                 </li>
                 <li>
