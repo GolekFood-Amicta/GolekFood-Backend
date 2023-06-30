@@ -19,8 +19,9 @@
                     <div class="card">
                         <div class="card-body p-3">
 
-                            <form class=" g-3" method="post" action="  route('list-news.store') }}" enctype="multipart/form-data">
+                            <form class=" g-3" method="post" action="{{  route('list-news.update', ['list_news' => $news->id]) }}" enctype="multipart/form-data">
                                 @csrf
+                                @method('put')
                                 <div class="w-25">
 
                                     <h5>Data Author</h5>

@@ -19,7 +19,8 @@
                     <div class="card">
                         <div class="card-body p-3">
 
-                            <form class=" g-3" method="post" action=" {{ route('list-news.store') }}" enctype="multipart/form-data">
+                            <form class=" g-3" method="post" action=" {{ route('list-news.store') }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="w-25">
 
@@ -36,37 +37,50 @@
                                     <hr>
                                 </div>
 
-                                    <div class="w-75">
-                                        <div class="py-2">
-                                            <label for="title" class="form-label">Title</label>
-                                            <input type="text"
-                                                class="form-control 
+                                <div class="w-75">
+                                    <div class="py-2">
+                                        <label for="title" class="form-label">Title</label>
+                                        <input type="text"
+                                            class="form-control 
                                             @error('title') 
                                             is-invalid
                                             @enderror
                                             "
-                                                id="title" name="title">
+                                            id="title" name="title">
 
-
-                                            @error('title')
-                                                <label class="form-check-label invalid-feedback">
-                                                    {{ $message }}
-                                                </label>
-                                            @enderror
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="image" class="form-label">Gambar</label>
-                                            <input class="form-control" type="file" id="image" name="image">
-                                          </div>
-
-                                        <div class="py-2">
-                                            <label for="bpjs" class="form-label">Isi Artikel</label>
-                                            <input id="body" type="hidden" name="body">
-                                            <trix-editor input="body"></trix-editor>
-
-                                        </div>
+                                        @error('title')
+                                            <label class="form-check-label invalid-feedback">
+                                                {{ $message }}
+                                            </label>
+                                        @enderror
                                     </div>
+
+                                    <div class="mb-3">
+                                        <label for="image" class="form-label">Gambar</label>
+                                        <input
+                                            class="form-control 
+                                            @error('title') 
+                                            is-invalid
+                                            @enderror"
+                                            type="file" id="image" name="image">
+                                        @error('body')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+
+
+
+                                    <div class="py-2">
+                                        <label for="bpjs" class="form-label">Isi Artikel</label>
+                                        <input id="body" type="hidden" name="body">
+                                        <trix-editor input="body"></trix-editor>
+
+                                        @error('body')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+
+                                    </div>
+                                </div>
 
 
 
@@ -85,7 +99,7 @@
     </section>
 
     <script>
-        document.addEventListener('trix-file-accept', function (e) {
+        document.addEventListener('trix-file-accept', function(e) {
             e.preventDefault();
         })
     </script>

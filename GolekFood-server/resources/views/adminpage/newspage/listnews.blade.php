@@ -82,7 +82,7 @@
                                                             class=" px-2 py-1
                                                         ">
                                                             <form
-                                                                action=" route('list-bidang.destroy', ['list_bidang' => $bidang->id]) }}"
+                                                                action="{{ route('list-news.destroy', ['list_news' => $news->id]) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')

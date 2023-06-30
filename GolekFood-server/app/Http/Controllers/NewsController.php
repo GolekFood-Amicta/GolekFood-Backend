@@ -20,14 +20,12 @@ class NewsController extends Controller
         try {
             if (isset($id)) {
                 $news = News::where('id', $id)->first();
-                // foreach ($news as $data) {
-                //     $user = User::where('id', $data->user_id)->first();
-                //     unset($data->user_id);
-                //     $data->author = $user;
-                // }
+                    $user = User::where('id', $news->user_id)->first();
+                    unset($news->user_id);
+                    $news->author = $user;
                 
             } else {
-                $news = News::paginate(5);
+                $news = News::orderBy('created_at', 'desc')->paginate(5);
                 foreach ($news as $data) {
                     $user = User::where('id', $data->user_id)->first();
                     unset($data->user_id);
@@ -116,7 +114,6 @@ class NewsController extends Controller
                  if($news->image != 'default-image.png'){
                     Storage::delete('image/'.$news->image);
                 }
-                 //Storage::delete('image'.$news->image);
                  Storage::putFileAs('image', $request->file, $image);
              }
 
