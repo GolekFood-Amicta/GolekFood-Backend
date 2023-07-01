@@ -13,6 +13,7 @@ class UserSubs extends Model
         'user_id',
         'subscription',
         'status',
+        'purchase_image',
         'subscription_start',
         'subscription_end'
     ];

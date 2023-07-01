@@ -31,64 +31,64 @@ Route::get('/', function () {
 });
 
 Route::get('/login-admin', [LoginController::class,'index'])->name('login')->middleware('guest');
-Route::post('/login-admin', [LoginController::class,'authenticate'])->name('post-login');
+Route::post('/login-admin', [LoginController::class,'authenticate'])->name('post-login')->middleware('guest');
 
-Route::post('/logout-admin', [LogoutController::class,'logout'])->name('logout');
+Route::post('/logout-admin', [LogoutController::class,'logout'])->name('logout')->middleware('auth');
 
 
-Route::get('/dashboard-admin', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard-admin', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 //feedback
 Route::resource('/list-feedback', ListFeedbackController::class)->names([
     'index' => 'list-feedback',
-]);
+])->middleware('auth');
 
-Route::get('/list-feedback-search', [ListFeedbackController::class, 'search'])->name('search-feedback');
+Route::get('/list-feedback-search', [ListFeedbackController::class, 'search'])->name('search-feedback')->middleware('auth');
 
 //news
 Route::resource('/list-news', ListNewsController::class)->names([
     'index' => 'list-news',
     'create' => 'create-news',
-   
-]);
-Route::get('/list-news-search', [ListNewsController::class, 'search'])->name('search-news');
+])->middleware('auth');
+
+Route::get('/list-news-search', [ListNewsController::class, 'search'])->name('search-news')->middleware('auth');
 
 //survey
 Route::resource('/list-survey', ListSurveyController::class)->names([
     'index' => 'list-survey',
-]);
+])->middleware('auth');
 
 //favourite
 Route::resource('list-favourite', ListFavouriteController::class)->names([
     'index' => 'list-favourite',
-]);
+])->middleware('auth');
 
-Route::get('/list-favourite-search', [ListFavouriteController::class, 'search'])->name('search-favourite');
+Route::get('/list-favourite-search', [ListFavouriteController::class, 'search'])->name('search-favourite')->middleware('auth');
 
 //user
 Route::resource('/list-user', ListUserController::class)->names([
     'index' => 'list-user',
-]);
+])->middleware('auth');
 
-Route::get('/list-user-search', [ListUserController::class, 'search'])->name('search-user');
+Route::get('/list-user-search', [ListUserController::class, 'search'])->name('search-user')->middleware('auth');
 
 //usersubs
 Route::resource('/list-usersubs', ListUserSubs::class)->names([
     'index' => 'list-usersubs',
     // 'update' => 'update-usersubs',
-]);
+])->middleware('auth');
 
 //antrean
-Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list-queuesubs');
+Route::get('/list-queuesubs', [ListUserSubs::class, 'indexAntrean'])->name('list-queuesubs')->middleware('auth');
 
 //user
 Route::resource('/profile', UserProfileController::class)->names([
     'index' => 'profile',
-]);
+])->middleware('auth');
 
 Route::resource('/change-password', ChangePasswordController::class)->names([
     'index' => 'change-password',
-]);
+])->middleware('auth');
 
 //upgrade roles user
 // Route::get('/upgrade-role', [UserProfileController::class, 'upgradeRole'])->name('upgrade-role');

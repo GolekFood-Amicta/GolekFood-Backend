@@ -43,6 +43,7 @@ class UserSubsSeeder extends Seeder
         ];
 
         foreach ($data as $d) {
+            $d['purchase_image'] = 'default-image.png';
             $d['created_at'] = Carbon::now()->format('Y-m-d H:i:s');
             DB::table('user_subs')->insert($d);
         }
