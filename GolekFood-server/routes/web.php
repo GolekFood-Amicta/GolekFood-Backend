@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     ListSurveyController,
     ListUserSubs,
     ListFavouriteController,
+    ListUserController,
     LoginController,
     LogoutController,
     UserProfileController
@@ -64,6 +65,13 @@ Route::resource('list-favourite', ListFavouriteController::class)->names([
 
 Route::get('/list-favourite-search', [ListFavouriteController::class, 'search'])->name('search-favourite');
 
+//user
+Route::resource('/list-user', ListUserController::class)->names([
+    'index' => 'list-user',
+]);
+
+Route::get('/list-user-search', [ListUserController::class, 'search'])->name('search-user');
+
 //usersubs
 Route::resource('/list-usersubs', ListUserSubs::class)->names([
     'index' => 'list-usersubs',
@@ -81,7 +89,6 @@ Route::resource('/profile', UserProfileController::class)->names([
 Route::resource('/change-password', ChangePasswordController::class)->names([
     'index' => 'change-password',
 ]);
-
 
 //upgrade roles user
 // Route::get('/upgrade-role', [UserProfileController::class, 'upgradeRole'])->name('upgrade-role');

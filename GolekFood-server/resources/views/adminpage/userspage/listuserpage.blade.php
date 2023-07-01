@@ -2,11 +2,11 @@
 
 @section('container')
     <div class="pagetitle">
-        <h1>Data Favourite Pengguna</h1>
+        <h1>Daftar Pengguna</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                <li class="breadcrumb-item active">Data Favourite Pengguna</li>
+                <li class="breadcrumb-item active">Daftar Pengguna</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -29,7 +29,7 @@
 
 
                             <div class="row p-3 border border-primary ">
-                                <form class="py-3 " action="{{ route('search-favourite') }}" method="GET">
+                                <form class="py-3 " action="{{ route('search-user') }}" method="GET">
                                     <div class="row justify-content-end">
                                         <div class="col-md-3">
                                             <input type="text" name="search" class="form-control"  required/>
@@ -44,21 +44,27 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Makanan</th>
-                                            <th>Jumlah Favourite oleh pengguna</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Roles</th>
+                                            <th>Address</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($dataFavourite as $key => $favourite)
+                                        @forelse ($dataUser as $key => $pengguna)
                                             <tr>
-                                                <td>{{ $dataFavourite->firstitem() + $key }}</td>
-                                                <td>{{ $favourite->foodname }}</td>
-                                                <td>{{ $favourite->user_count }}</td>
+                                                <td>{{ $dataUser->firstitem() + $key }}</td>
+                                                <td>{{ $pengguna->name }}</td>
+                                                <td>{{ $pengguna->email }}</td>
+                                                <td>{{ $pengguna->roles->name }}</td>
+                                                <td>{{ $pengguna->address }}</td>   
+                                                <td>{{ $pengguna->created_at->format('d/m/Y') }}</td>
                                                 </td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="3" class="text-center">empty</td>
+                                                <td colspan="4" class="text-center">empty</td>
                                             </tr>
                                         @endforelse
 
@@ -72,7 +78,7 @@
                                 
 
                                 <div class="p-3">
-                                    {!! $dataFavourite->render() !!}
+                                    {!! $dataUser->render() !!}
                                 </div>
                             
                             

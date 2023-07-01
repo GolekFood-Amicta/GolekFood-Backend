@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->enum('subscription', ['Mingguan','Bulanan','Tahunan']);
-            $table->enum('status', ['Active','Inactive'])->default('Inactive');  
+            $table->enum('status', ['Active','Inactive'])->default('Inactive'); 
+            $table->string('') 
             $table->timestamp('subscription_start')->nullable();
             $table->timestamp('subscription_end')->nullable();
             $table->timestamps();
