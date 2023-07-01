@@ -6,6 +6,7 @@ use App\Models\UserSubs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ListUserSubs extends Controller
 {
@@ -23,6 +24,10 @@ class ListUserSubs extends Controller
     {
         //
         $data = UserSubs::latest()->where('status', 'Inactive')->simplePaginate(15);
+        foreach ($data as $item) {
+            $item->urlImage = Storage::url('image/' . $item->purchase_image);
+        }
+        
         return view('adminpage.usersubscriptionpage.listqueuesubs', ['dataSubs' => $data]);
     }
 

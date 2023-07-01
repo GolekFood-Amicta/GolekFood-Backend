@@ -48,4 +48,5 @@ class UserSubsSeeder extends Seeder
             DB::table('user_subs')->insert($d);
         }
     }
+    
 }

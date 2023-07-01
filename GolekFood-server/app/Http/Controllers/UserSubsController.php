@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserSubsController extends Controller
@@ -45,10 +46,20 @@ class UserSubsController extends Controller
                 return new PostResource(false, "User tidak ditemukan");
             }
 
+            $purchase_image = null;
+            if($request->file){
+                $fileName = $this->generateRandomString();
+                $extension = $request->file->extension();
+                $purchase_image = $fileName.'.'.$extension;
+
+                Storage::putFileAs('image', $request->file, $purchase_image);
+            }
+
             $data = [
                 'user_id' => $request->user_id,
                 'subscription' => $request->subscription,
                 'status' => 'Inactive',
+                'purchase_image' => $purchase_image
             ];
             $feedback = UserSubs::create($data);
 
@@ -60,48 +71,14 @@ class UserSubsController extends Controller
     }
     
 
-    // public function addUserSubs(Request $request)
-    // {
-    //     try {
-    //         $rules = [
-    //             'user_id' => 'required',
-    //             'subscription' => 'required'
-    //         ];
-    //         $validation = Validator::make($request->all(), $rules);
-    //         if ($validation->fails()) {
-    //             return new PostResource(false, "Subscription gagal ditambahkan", $validation->errors()->all());
-    //         }
-    //         $user = User::where('id', $request->user_id)->first();
-    //         if (!$user) {
-    //             return new PostResource(false, "User tidak ditemukan");
-    //         }
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 
-    //         if(($request->subscription) == "Mingguan"){
-    //             $subscription_end = Carbon::now()->addDays(7);
-    //         }
-
-    //         if(($request->subscription) == "Bulanan"){
-    //             $subscription_end = Carbon::now()->addMonth();
-    //         }
-
-    //         if(($request->subscription) == "Tahunan"){
-    //             $subscription_end = Carbon::now()->addYear();
-    //         }
-
-
-    //         $data = [
-    //             'user_id' => $request->user_id,
-    //             'subscription' => $request->subscription,
-    //             'subscription_start' => Carbon::now(),
-    //             'subscription_end' => $subscription_end
-    //         ];
-    //         $feedback = UserSubs::create($data);
-
-
-    //         return new PostResource(true, "subscription berhasil ditambahkan", $feedback);
-    //     } catch (\Throwable $th) {
-    //         return new PostResource(false, "subscription gagal ditambahkan");
-    //     }
-    // }
-    
 }

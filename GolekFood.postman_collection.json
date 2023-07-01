@@ -351,15 +351,32 @@
 					"name": "1. Request Subscription",
 					"request": {
 						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"user_id\" : 5,\r\n    \"subscription\" : \"Mingguan\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
 							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "subscription",
+									"value": "Mingguan",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/arifi/Downloads/default-image.jpg"
+								}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/request-subscription",
@@ -371,7 +388,97 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "1. Request Subscription",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "subscription",
+											"value": "Mingguan",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/arifi/Downloads/default-image.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/request-subscription",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"request-subscription"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jul 2023 09:37:46 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jul 2023 09:37:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"subscription berhasil ditambahkan\",\n    \"data\": {\n        \"user_id\": \"1\",\n        \"subscription\": \"Mingguan\",\n        \"status\": \"Inactive\",\n        \"purchase_image\": \"qOuoWzb3Jx.jpg\",\n        \"updated_at\": \"2023-07-01T09:37:46.000000Z\",\n        \"created_at\": \"2023-07-01T09:37:46.000000Z\",\n        \"id\": 6\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "2. Approve Subscription",
@@ -528,7 +635,7 @@
 											},
 											{
 												"key": "Authorization",
-												"value": "Bearer 4|5H2PZQhKjTprCjljBu8SS9SU2uzpwRu7EU391kQl",
+												"value": "Bearer 5|7GhpuJ8dh8BW0rOBfwdzK86ruYaCyWiJHggc4jFo",
 												"type": "text"
 											}
 										],
@@ -948,7 +1055,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/news?page=3",
+							"raw": "{{url}}/news?page=1",
 							"host": [
 								"{{url}}"
 							],
@@ -958,7 +1065,7 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "3"
+									"value": "1"
 								}
 							]
 						}
@@ -996,13 +1103,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/news-user/1",
+							"raw": "{{url}}/news-user/5",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"news-user",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -1026,7 +1133,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/arifi/Downloads/350739687_162714476633360_7914491254946479927_n.jpg"
+									"src": "/C:/Users/arifi/Downloads/FxIgZnaacAEyr39 (1).jpg"
 								},
 								{
 									"key": "user_id",
