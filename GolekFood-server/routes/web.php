@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     ListNewsController,
     ListSurveyController,
     ListUserSubs,
+    ListFavouriteController,
     LoginController,
     LogoutController,
     UserProfileController
@@ -55,6 +56,13 @@ Route::get('/list-news-search', [ListNewsController::class, 'search'])->name('se
 Route::resource('/list-survey', ListSurveyController::class)->names([
     'index' => 'list-survey',
 ]);
+
+//favourite
+Route::resource('list-favourite', ListFavouriteController::class)->names([
+    'index' => 'list-favourite',
+]);
+
+Route::get('/list-favourite-search', [ListFavouriteController::class, 'search'])->name('search-favourite');
 
 //usersubs
 Route::resource('/list-usersubs', ListUserSubs::class)->names([

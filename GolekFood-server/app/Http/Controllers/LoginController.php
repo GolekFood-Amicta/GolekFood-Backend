@@ -25,6 +25,14 @@ class LoginController extends Controller
 
         
         if (Auth::attempt($credentials)) {
+
+            if(Auth::user()->roles_id != 2){
+                Auth::logout();
+                return back()->with([
+                    'loginError' => 'Login gagal, Anda tidak mempunyai akses',
+                ])->onlyInput('email');
+            }
+
             $request->session()->regenerate();
             
             return redirect()->intended('dashboard-admin');

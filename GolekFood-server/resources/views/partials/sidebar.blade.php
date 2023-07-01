@@ -38,6 +38,12 @@
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
+            <a class="nav-link " href=" {{ route('list-favourite') }} ">
+                <i class="bi bi-grid"></i>
+                <span>Data Favourite</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
             <a class="nav-link " href=" {{ route('list-queuesubs') }} ">
                 <i class="bi bi-grid"></i>
                 <span>Data Antrean Subscription</span>

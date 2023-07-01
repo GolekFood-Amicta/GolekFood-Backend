@@ -14,6 +14,7 @@ class ListFeedbackController extends Controller
     {
         //
         $data = Feedback::latest()->simplePaginate(10);
+        
         return view('adminpage.feedbackpage.listfeedback', ['dataFeedback' => $data]);
         
     }
