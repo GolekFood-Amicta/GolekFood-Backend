@@ -27,7 +27,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(auth()->user()){
+        return redirect()->route('dashboard');
+    }else{
+        return redirect()->route('login');
+    }
 });
 
 Route::get('/login-admin', [LoginController::class,'index'])->name('login')->middleware('guest');

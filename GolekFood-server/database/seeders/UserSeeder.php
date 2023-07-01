@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
                 'email' => 'arifin@gmail.com',
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
-                'roles_id' => rand(1,2),
+                'roles_id' => 2,
                
             ],
         ];

@@ -51,7 +51,7 @@
                                                 <td>{{ $subscription->user->email }}</td>
                                                 <td>{{ $subscription->subscription }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-outline-warning">Lihat Bukti</button>
+                                                    <a href="{{ $subscription->urlImage }}" class="btn btn-outline-warning">Lihat Bukti</a>
                                                 </td>
 
                                                 @if (($subscription->status) == 'Active')

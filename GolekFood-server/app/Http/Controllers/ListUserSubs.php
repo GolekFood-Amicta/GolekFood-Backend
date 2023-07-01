@@ -17,6 +17,10 @@ class ListUserSubs extends Controller
     {
         //
         $data = UserSubs::latest()->where('status', 'Active')->simplePaginate(15);
+        foreach ($data as $item) {
+            $item->urlImage = Storage::url('image/' . $item->purchase_image);
+        }
+
         return view('adminpage.usersubscriptionpage.listusersubs', ['dataSubs' => $data]);
     }
 

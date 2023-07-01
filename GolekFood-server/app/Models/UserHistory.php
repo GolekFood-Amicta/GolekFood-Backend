@@ -9,6 +9,8 @@ class UserHistory extends Model
 {
     use HasFactory;
 
+
+    protected $table = 'userhistory';
     protected $fillable = [
         'user_id'
     ];

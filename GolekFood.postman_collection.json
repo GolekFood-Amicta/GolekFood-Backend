@@ -23,7 +23,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "// isi bagian authorization dengan token login yang didapatkan\r\n// contoh : \"Bearer \"+\"2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\"\r\n//Bearer 2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\r\n\r\n{\r\n    \"email\" : \"zaky@gmail.com\",\r\n    \"password\" : \"password\"\r\n}\r\n",
+							"raw": "// isi bagian authorization dengan token login yang didapatkan\r\n// contoh : \"Bearer \"+\"2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\"\r\n//Bearer 2|IslawjycTzshPH6t8f0U6GNdZy9u1OFOgACUoV2R\r\n\r\n{\r\n    \"email\" : \"anas@gmail.com\",\r\n    \"password\" : \"password\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -502,124 +502,8 @@
 			"name": "Discover-Food",
 			"item": [
 				{
-					"name": "Discover-Food Public",
-					"item": [
-						{
-							"name": "Discover-Foods-Adv",
-							"item": [
-								{
-									"name": "Response ML",
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"energi\": 200,\r\n    \"protein\": 10.1,\r\n    \"lemak\": 15.1,\r\n    \"karbohidrat\": 120\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{url}}/discover-food-adv-public",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"discover-food-adv-public"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Discover-Foods",
-							"item": [
-								{
-									"name": "Response ML",
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"energi\": 0.12,\r\n    \"protein\": 0.3,\r\n    \"lemak\": 0.45,\r\n    \"karbohidrat\": 0.6\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{url}}/discover-food-public",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"discover-food-public"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						}
-					]
-				},
-				{
 					"name": "Discover-Food Non-Public",
 					"item": [
-						{
-							"name": "Discover-Foods",
-							"item": [
-								{
-									"name": "Cek Validasi Favourite by User Id",
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"user_id\" : 1,\r\n    \"energi\": 0.12,\r\n    \"protein\": 0.3,\r\n    \"lemak\": 0.45,\r\n    \"karbohidrat\": 0.6\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{url}}/discover-food",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"discover-food"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
 						{
 							"name": "Discover-Foods-Adv",
 							"item": [

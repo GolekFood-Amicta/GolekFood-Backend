@@ -14,12 +14,6 @@
         <li class="nav-heading">Admin Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link " href=" {{ route('list-feedback') }} ">
-                <i class="bi bi-grid"></i>
-                <span>Promote Roles User</span>
-            </a>
-        </li><!-- End Dashboard Nav -->
-        <li class="nav-item">
             <a class="nav-link " href=" {{ route('list-user') }} ">
                 <i class="bi bi-grid"></i>
                 <span>Data User</span>
