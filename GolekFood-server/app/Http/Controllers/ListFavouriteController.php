@@ -11,14 +11,16 @@ class ListFavouriteController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
     public function index()
     {
-        //
         $data = Favourite::select('foodname', DB::raw('COUNT(*) as user_count'))
-        ->groupBy('foodname')
-        ->orderBy('user_count', 'desc')
-        ->latest()
-        ->simplePaginate(10);
+            ->groupBy('foodname')
+            ->orderByRaw('COUNT(*) DESC')
+            ->latest()
+            ->simplePaginate(10);
+
         return view('adminpage.favouritepage.listfavourite', ['dataFavourite' => $data]);
     }
 
@@ -77,7 +79,7 @@ class ListFavouriteController extends Controller
         $data = Favourite::select('foodname', DB::raw('COUNT(*) as user_count'))
             ->where('foodname', 'LIKE', "%{$search}%")
             ->groupBy('foodname')
-            ->orderBy('user_count', 'desc')
+            ->orderByRaw('COUNT(*) DESC')
             ->simplePaginate(10);
     
         return view('adminpage.favouritepage.listfavourite', ['dataFavourite' => $data]);
