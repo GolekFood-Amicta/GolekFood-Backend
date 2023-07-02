@@ -10,7 +10,7 @@ class UserHistory extends Model
     use HasFactory;
 
 
-    protected $table = 'userhistory';
+    protected $table = 'user_history';
     protected $fillable = [
         'user_id'
     ];
