@@ -18,7 +18,6 @@ class ListFavouriteController extends Controller
         $data = Favourite::select('foodname', DB::raw('COUNT(*) as user_count'))
             ->groupBy('foodname')
             ->orderByRaw('COUNT(*) DESC')
-            ->latest()
             ->simplePaginate(10);
 
         return view('adminpage.favouritepage.listfavourite', ['dataFavourite' => $data]);
