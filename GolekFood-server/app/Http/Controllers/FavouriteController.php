@@ -222,8 +222,6 @@ class FavouriteController extends Controller
 
             $response = Http::post($url, $data);
 
-
-
             $data = $response->json();
             // Mengakses data di dalam "data"
             $recom = $data['data'];

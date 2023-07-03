@@ -19,7 +19,9 @@
                     <div class="card">
                         <div class="card-body p-3">
 
-                            <form class=" g-3" method="post" action="{{  route('list-news.update', ['list_news' => $news->id]) }}" enctype="multipart/form-data">
+                            <form class=" g-3" method="post"
+                                action="{{ route('list-news.update', ['list_news' => $news->id]) }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                 <div class="w-25">
@@ -37,37 +39,48 @@
                                     <hr>
                                 </div>
 
-                                    <div class="w-75">
-                                        <div class="py-2">
-                                            <label for="title" class="form-label">Title</label>
-                                            <input type="text" value="{{ $news->title }}"
-                                                class="form-control 
+                                <div class="w-75">
+                                    <div class="py-2">
+                                        <label for="title" class="form-label">Title</label>
+                                        <input type="text" value="{{ $news->title }}"
+                                            class="form-control 
                                             @error('title') 
                                             is-invalid
                                             @enderror
                                             "
-                                                id="title" name="title">
+                                            id="title" name="title">
 
 
-                                            @error('title')
-                                                <label class="form-check-label invalid-feedback">
-                                                    {{ $message }}
-                                                </label>
-                                            @enderror
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="image" class="form-label">Gambar</label>
-                                            <input class="form-control" type="file" id="image" name="image" value="{{ $news->image }}">
-                                          </div>
-
-                                        <div class="py-2">
-                                            <label for="bpjs" class="form-label">Isi Artikel</label>
-                                            <input id="body" type="hidden" name="body" value="{{ $news->body }}">    
-                                            <trix-editor input="body"></trix-editor>
-
-                                        </div>
+                                        @error('title')
+                                            <label class="form-check-label invalid-feedback">
+                                                {{ $message }}
+                                            </label>
+                                        @enderror
                                     </div>
+
+
+                                    <label for="image" class="form-label pt-3">Gambar</label>
+                                    <div class="mb-3">
+                                        
+                                        @if ($news->image != null)
+                                            <img src="{{ $urlImage }}" alt="..."
+                                                class="img-thumbnail rounded float-left m-3 w-25">
+                                        @endif
+                                        <input class="form-control" type="file" id="image" name="image"
+                                            value="{{ $news->image }}">
+                                    </div>
+
+
+
+
+
+                                    <div class="py-2">
+                                        <label for="bpjs" class="form-label">Isi Artikel</label>
+                                        <input id="body" type="hidden" name="body" value="{{ $news->body }}">
+                                        <trix-editor input="body"></trix-editor>
+
+                                    </div>
+                                </div>
 
 
 
@@ -86,7 +99,7 @@
     </section>
 
     <script>
-        document.addEventListener('trix-file-accept', function (e) {
+        document.addEventListener('trix-file-accept', function(e) {
             e.preventDefault();
         })
     </script>

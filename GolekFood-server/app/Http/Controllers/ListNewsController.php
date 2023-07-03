@@ -39,7 +39,7 @@ class ListNewsController extends Controller
         $validatedDAta = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
         ]);
 
         $image = null;
@@ -74,7 +74,15 @@ class ListNewsController extends Controller
     {
         //
         $news = News::find($id);
-        return view('adminpage.newspage.editnews', ['news' => $news]);
+        
+        if($news->image != null){
+            $urlImage = Storage::url('image/' . $news->image);
+        }
+
+        return view('adminpage.newspage.editnews', [
+            'news' => $news,
+            'urlImage' => $urlImage
+        ]);
     }
 
     /**
@@ -88,6 +96,7 @@ class ListNewsController extends Controller
         $validatedDAta = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp'
         ]);
 
         $image = $news->image;

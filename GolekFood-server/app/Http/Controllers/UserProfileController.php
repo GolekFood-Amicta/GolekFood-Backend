@@ -26,7 +26,6 @@ class UserProfileController extends Controller
             'password' => 'required',
         ]);
 
-
         $user = $request->user();
         $user = User::where('id',$user->id)->first();
 
