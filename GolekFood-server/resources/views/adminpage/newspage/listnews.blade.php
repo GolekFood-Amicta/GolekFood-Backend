@@ -71,6 +71,12 @@
                                                 
                                                 <td>
                                                     <div class="row justify-content-start">
+                                                        {{-- <div class="px-2 py-1">
+                                                            <a href="{{ route('list-news.see', ['list_news' => $news->id]) }}"
+                                                                type="button" class="btn btn-primary">
+                                                                <i class="bi bi-eye text-white"> Lihat Berita</i>
+                                                            </a>
+                                                        </div> --}}
                                                         <div class="px-2 py-1">
                                                             <a href="{{ route('list-news.edit', ['list_news' => $news->id]) }}"
                                                                 type="button" class="btn btn-primary">

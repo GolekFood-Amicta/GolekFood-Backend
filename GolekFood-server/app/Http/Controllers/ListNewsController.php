@@ -39,7 +39,6 @@ class ListNewsController extends Controller
         $validatedDAta = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
         ]);
 
         $image = null;
