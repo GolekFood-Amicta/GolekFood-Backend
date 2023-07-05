@@ -126,8 +126,23 @@ class FavouriteController extends Controller
     public function deleteFavourite(Request $request)
     {
         try {
-            $food = Favourite::where('id', $request->id_favourite)->first();
+
+            $rules = [
+                'user_id' => 'required',
+                'food_id' => 'required'
+            ];
+            $validation = Validator::make($request->all(), $rules);
+            if ($validation->fails()) {
+                return new PostResource(false, "Favourite gagal dihapus", $validation->errors()->all());
+            }
+            $food = Favourite::where('user_id', $request->user_id)->where('food_id', $request->food_id)->first();
+            if (!$food) {
+                return new PostResource(false, "Favourite tidak ditemukan");
+            }
             $food->delete();
+
+            // $food = Favourite::where('id', $request->id_favourite)->first();
+            // $food->delete();
             return new PostResource(true, "Favourite Berhasil dihapus", $food);
         } catch (\Throwable $th) {
             return new PostResource(false, "Favourite Gagal dihapus");

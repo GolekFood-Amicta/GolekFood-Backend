@@ -210,7 +210,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer 3|5CJz346NEALQObY3sV8UWHQgw6df6X1kLSjfDOCR",
+								"value": "Bearer 1|zqlBO4xC5SkIv4u1jE6nWbtlt3M1VIsCcdE8nOPQ",
 								"type": "text"
 							}
 						],
@@ -220,7 +220,8 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/arifi/Downloads/pngwing.com.png"
+									"src": "/C:/Users/arifi/Downloads/pngwing.com.png",
+									"disabled": true
 								},
 								{
 									"key": "name",
@@ -909,7 +910,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_favourite\" : 20\r\n}",
+							"raw": "{\r\n    \"user_id\" : 4,\r\n    \"food_id\" : 9\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -926,7 +927,80 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Delete Favourite",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\" : 4,\r\n    \"food_id\" : 9\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/favourite",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"favourite"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 11:19:43 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 11:19:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Favourite Berhasil dihapus\",\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 4,\n        \"food_id\": \"9\",\n        \"foodname\": \"Ampas tahu mentah\",\n        \"fat\": \"444\",\n        \"protein\": \"829\",\n        \"carbohydrate\": \"162\",\n        \"calories\": \"279\",\n        \"image\": null,\n        \"created_at\": \"2023-07-03T07:38:29.000000Z\",\n        \"updated_at\": \"2023-07-03T07:38:29.000000Z\"\n    }\n}"
+						}
+					]
 				}
 			]
 		},
