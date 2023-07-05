@@ -26,6 +26,9 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 Route::get('/logout', [AuthenticationController::class, 'logout'])->middleware(['auth:sanctum']);
 Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/change-password', [AuthenticationController::class, 'changePassword'])->middleware(['auth:sanctum']);
+Route::post('/forgot-password', [AuthenticationController::class, 'forgotPassword']);
+Route::get('/reset-password/{token}', [AuthenticationController::class, 'resetPassword'])->name('password.reset');
+Route::post('/reset-password-client', [AuthenticationController::class, 'resetPasswordClient']);
 
 //User
 Route::controller(UserController::class)->group(function(){
@@ -36,6 +39,7 @@ Route::controller(UserController::class)->group(function(){
         Route::delete('/', 'deleteUser');
     });
 });
+
 
 
 //feedback

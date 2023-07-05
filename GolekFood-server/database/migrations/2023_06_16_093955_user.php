@@ -28,6 +28,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->foreignId('roles_id')->constrained('roles');
+            $table->rememberToken();
             // $table->string('subscription');
             // $table->timestamp('subscription_start')->nullable();
             // $table->timestamp('subscription_end')->nullable();

@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Resources\PostResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class AuthenticationController extends Controller
 {
     //
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $rules = [
             'email'         => 'required',
             'password'      => 'required',
@@ -47,10 +50,10 @@ class AuthenticationController extends Controller
             'user' => $user
         ];
         return new PostResource(true, "login berhasil", $data);
-    
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         try {
             $user = $request->user();
             $user->tokens()->where('id', $user->id)->delete();
@@ -89,7 +92,7 @@ class AuthenticationController extends Controller
             return new PostResource(false, $validator->errors()->first());
         }
 
-        
+
         $data = [
             'email' => strtolower($request->email),
             'name' => strtolower($request->name),
@@ -98,7 +101,7 @@ class AuthenticationController extends Controller
             'roles_id' => $request->roles_id,
         ];
 
-        
+
         try {
             $user = User::create($data);
             return new PostResource(true, "User berhasil teregistrasi", $user);
@@ -107,9 +110,10 @@ class AuthenticationController extends Controller
         }
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request)
+    {
         try {
-            if(Auth::check()){
+            if (Auth::check()) {
                 $rules = [
                     'password'      => 'required|min:6',
                 ];
@@ -122,20 +126,62 @@ class AuthenticationController extends Controller
                     return new PostResource(false, $validator->errors()->first());
                 }
                 $user = $request->user();
-                $user = User::where('id',$user->id)->first();
+                $user = User::where('id', $user->id)->first();
                 try {
-                $user->update([
-                    'password' => Hash::make($request->password)
-                ]);
-                return new PostResource(true, "Password Berhasil diperbarui");
+                    $user->update([
+                        'password' => Hash::make($request->password)
+                    ]);
+                    return new PostResource(true, "Password Berhasil diperbarui");
                 } catch (\Throwable $th) {
                     return new PostResource(false, "Password Gagal diperbarui");
                 }
             }
         } catch (\Throwable $th) {
-            return new PostResource(false,"unauthenticated");
+            return new PostResource(false, "unauthenticated");
         }
     }
 
+    public function forgotPassword(Request $request)
+    {
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+        return $status === Password::RESET_LINK_SENT
+            ? new PostResource(true, "Email reset password berhasil dikirim")
+            : new PostResource(false, "Email reset password gagal dikirim");
+    }
 
+    public function resetPassword($token){
+        return $token;
+    }
+
+    public function resetPasswordClient(Request $request)
+    {   
+    
+        try {
+            $request->validate([
+                'token' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|min:6|confirmed',
+            ]);
+            $status = Password::reset(
+                $request->only('email', 'password', 'password_confirmation', 'token'),
+                function ($user, $password){
+                    $user->forceFill([
+                        'password' => Hash::make($password)
+                    ])->setRememberToken(Str::random(60));
+                    $user->save();
+                        
+                    event(new \Illuminate\Auth\Events\PasswordReset($user));
+                }
+            );  
+            if ($status == Password::INVALID_TOKEN) {
+                return new PostResource(false, "reset password gagal");
+            }
+            return new PostResource(true, "reset password berhasil");
+        } catch (\Throwable $th) {
+            return $th;
+        }
+        
+    }
 }

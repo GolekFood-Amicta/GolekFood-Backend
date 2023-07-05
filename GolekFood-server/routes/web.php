@@ -10,6 +10,7 @@ use App\Http\Controllers\{
     ListUserController,
     LoginController,
     LogoutController,
+    TestingEmailController,
     UserProfileController
 };
 
@@ -96,3 +97,5 @@ Route::resource('/change-password', ChangePasswordController::class)->names([
 
 //upgrade roles user
 // Route::get('/upgrade-role', [UserProfileController::class, 'upgradeRole'])->name('upgrade-role');
+
+Route::get('/send-email', [TestingEmailController::class, 'index']);

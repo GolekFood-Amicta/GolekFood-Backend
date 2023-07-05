@@ -52,7 +52,6 @@ class UserController extends Controller
                  Storage::putFileAs('image', $request->file, $avatar);
              }
 
-
              $data = [
                 'name' => strtolower($request->name),
                 'email' => strtolower($request->email),

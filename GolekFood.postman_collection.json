@@ -150,6 +150,228 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "1. Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"anas@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/forgot-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"forgot-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "1. Forgot Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"anas@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/forgot-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"forgot-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 16:46:59 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 16:46:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Email reset password berhasil dikirim\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "2. Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"c92b593debf5b45db8173b5eabc45b7e7b7d7a58c141ff33a4398c5c0e6fad19\",\r\n    \"email\" : \"anas@gmail.com\",\r\n    \"password\" : \"password2\",\r\n    \"password_confirmation\" : \"password2\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/reset-password-client",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reset-password-client"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "1. Forgot Password Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\" : \"c92b593debf5b45db8173b5eabc45b7e7b7d7a58c141ff33a4398c5c0e6fad19\",\r\n    \"email\" : \"anas@gmail.com\",\r\n    \"password\" : \"password2\",\r\n    \"password_confirmation\" : \"password2\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/reset-password-client",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"reset-password-client"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 16:50:33 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 16:50:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"reset password berhasil\",\n    \"data\": null\n}"
+						}
+					]
 				}
 			]
 		},
