@@ -1080,7 +1080,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_id\" : 3, \r\n    \"food_id\" : 1329,\r\n    \"foodname\" : \"seblak\",\r\n    \"fat\" : 200,\r\n    \"protein\" : 100,\r\n    \"carbohydrate\" : 300,\r\n    \"calories\" : 400\r\n}",
+							"raw": "{\r\n    \"user_id\" : 3, \r\n    \"food_id\" : 1329,\r\n    \"foodname\" : \"seblak\",\r\n    \"fat\" : 200,\r\n    \"protein\" : 100,\r\n    \"carbohydrate\" : 300,\r\n    \"calories\" : 400,\r\n    \"image\" : \"coba.img\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1106,7 +1106,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_favourite\" : 3,\r\n    \"food_id\" : 1329,\r\n    \"foodname\" : \"seblak2\",\r\n    \"fat\" : 200,\r\n    \"protein\" : 100,\r\n    \"carbohydrate\" : 300,\r\n    \"calories\" : 400\r\n}",
+							"raw": "{\r\n    \"id_favourite\" : 3,\r\n    \"food_id\" : 1329,\r\n    \"foodname\" : \"seblak2\",\r\n    \"fat\" : 200,\r\n    \"protein\" : 100,\r\n    \"carbohydrate\" : 300,\r\n    \"calories\" : 400,\r\n    \"image\" : \"coba.img\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

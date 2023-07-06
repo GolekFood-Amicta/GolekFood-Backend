@@ -64,6 +64,7 @@ class FavouriteController extends Controller
                     'protein' => 'required',
                     'carbohydrate' => 'required',
                     'calories' => 'required',
+                    'image' => 'required'
 
                 ];
                 $validation = Validator::make($request->all(), $rules);
@@ -84,6 +85,7 @@ class FavouriteController extends Controller
                     'protein' => $request->protein,
                     'carbohydrate' => $request->carbohydrate,
                     'calories' => $request->calories,
+                    'image' => $request->image
                 ];
                 $favourite = Favourite::create($data);
                 $favourite['is_favourite'] = true;
@@ -107,6 +109,7 @@ class FavouriteController extends Controller
                 'protein' => $request->protein,
                 'carbohydrate' => $request->carbohydrate,
                 'calories' => $request->calories,
+                'image' => $request->image
             ];
             $food = Favourite::where('id', $request->id_favourite)->first();
             if (!$food) {
