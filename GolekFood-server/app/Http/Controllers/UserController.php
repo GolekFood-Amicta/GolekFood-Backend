@@ -53,8 +53,8 @@ class UserController extends Controller
              }
 
              $data = [
-                'name' => strtolower($request->name),
-                'email' => strtolower($request->email),
+                'name' => $request->name,
+                'email' => $request->email,
                 'address' => $request->address,
                 'password' => Hash::make($request->password),
                 'avatar' => $avatar
