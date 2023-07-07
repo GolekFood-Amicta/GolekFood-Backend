@@ -44,6 +44,12 @@ class FavouriteController extends Controller
     {
         try {
             $food = Favourite::where('user_id', $id)->get();
+            foreach ($food as $data) {
+                $user_id = $data->user->id;
+                unset($data->user_id);
+                $data->is_favourite = true;
+                $data->user = User::where('id', $user_id)->first();
+            }
             return new PostResource(true, "data Food ditemukan", $food);
         } catch (\Throwable $th) {
             return new PostResource(false, "data Food tidak ada");
@@ -117,8 +123,6 @@ class FavouriteController extends Controller
             }
 
             $food->update($data);
-
-
 
             return new PostResource(true, "data Favourite berhasil diubah", $food);
         } catch (\Throwable $th) {
