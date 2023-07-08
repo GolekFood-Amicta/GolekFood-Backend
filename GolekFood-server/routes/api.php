@@ -4,10 +4,10 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SubscriptionNewsController;
 use App\Http\Controllers\SurveyResultController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserSubsController;
-use App\Models\UserSubs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -120,7 +120,12 @@ Route::controller(UserSubsController::class)->group(function(){
 
 });
 
-
+//Subscription News
+Route::controller(SubscriptionNewsController::class)->group(function(){
+    Route::prefix('/subscription-news')->group(function (){
+        Route::post('/', 'addSubscriptionNews');
+    });
+});
 
 //Discover Food
 Route::post('/discover-food-adv', [FavouriteController::class, 'discoverFoodAdv'])->middleware('auth:sanctum');

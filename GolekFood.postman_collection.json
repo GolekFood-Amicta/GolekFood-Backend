@@ -1423,6 +1423,44 @@
 			]
 		},
 		{
+			"name": "Subscription News",
+			"item": [
+				{
+					"name": "Add News",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "image",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"arifi23n@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/subscription-news",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subscription-news"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Machine Learning",
 			"item": [
 				{
