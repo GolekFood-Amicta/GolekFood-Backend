@@ -432,7 +432,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer 1|zqlBO4xC5SkIv4u1jE6nWbtlt3M1VIsCcdE8nOPQ",
+								"value": "Bearer 2|8nmPOEiRrliirqrSE5YPMpUrbCkZPTO39qBxu73u",
 								"type": "text"
 							}
 						],
@@ -442,12 +442,12 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/arifi/Downloads/pngwing.com.png",
+									"src": "/C:/Users/arifi/OneDrive/Documents/logo isaku.png",
 									"disabled": true
 								},
 								{
 									"key": "name",
-									"value": "Restu Putra",
+									"value": "Anass",
 									"type": "text"
 								},
 								{
@@ -458,11 +458,6 @@
 								{
 									"key": "password",
 									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "Zaky@gmail.com",
 									"type": "text"
 								}
 							]
