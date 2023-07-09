@@ -55,6 +55,12 @@
                 <span>Data Subscription</span>
             </a>
         </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link " href=" {{ route('list-langganan-news') }} ">
+                <i class="bi bi-grid"></i>
+                <span>Data Langganan Berita</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
 
         
         

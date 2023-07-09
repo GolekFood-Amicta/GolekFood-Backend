@@ -15,7 +15,6 @@ class ListNewsController extends Controller
      */
     public function index()
     {
-
         //
         $data = News::latest()->simplePaginate(10);
         return view('adminpage.newspage.listnews', ['dataNews' => $data]);

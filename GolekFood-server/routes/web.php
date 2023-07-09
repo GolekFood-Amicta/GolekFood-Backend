@@ -7,13 +7,15 @@ use App\Http\Controllers\{
     ListSurveyController,
     ListUserSubs,
     ListFavouriteController,
+    ListSubscriptionNewsController,
     ListUserController,
     LoginController,
     LogoutController,
+    SubscriptionNewsController,
     TestingEmailController,
     UserProfileController
 };
-
+use App\Models\SubscriptionNews;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -97,5 +99,12 @@ Route::resource('/change-password', ChangePasswordController::class)->names([
 
 //upgrade roles user
 // Route::get('/upgrade-role', [UserProfileController::class, 'upgradeRole'])->name('upgrade-role');
+
+//Langganan News
+Route::resource('/langganan-news', ListSubscriptionNewsController::class)->names([
+    'index' => 'list-langganan-news',
+])->middleware('auth');
+
+Route::get('/langganan-news-search', [ListSubscriptionNewsController::class, 'search'])->name('search-langganan-news')->middleware('auth');
 
 Route::get('/send-email', [TestingEmailController::class, 'index']);
