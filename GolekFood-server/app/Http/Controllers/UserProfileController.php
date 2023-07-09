@@ -23,15 +23,10 @@ class UserProfileController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'address' => 'required',
-            'password' => 'required',
         ]);
 
         $user = $request->user();
         $user = User::where('id',$user->id)->first();
-
-        if(!Hash::check($request->password, $user->password)){
-            return redirect('/dashboard-admin')->with('error', 'Profile gagal diperbaharui');
-        }
 
         $avatar = $user->avatar;
         if($request->file('avatar') ){

@@ -36,10 +36,6 @@ class UserController extends Controller
             $user = $request->user();
             $user = User::where('id',$user->id)->first();
 
-            if(!Hash::check($request->password, $user->password)){
-                return new PostResource(false, "password anda salah");
-            }
-
             $avatar = $user->avatar;
              if($request->file ){
                  $fileName = $this->generateRandomString();
@@ -54,9 +50,7 @@ class UserController extends Controller
 
              $data = [
                 'name' => $request->name,
-                'email' => $request->email,
                 'address' => $request->address,
-                'password' => Hash::make($request->password),
                 'avatar' => $avatar
             ];             
 

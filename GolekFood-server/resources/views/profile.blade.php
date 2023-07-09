@@ -52,21 +52,6 @@
                                         @enderror
                                     </div>
 
-                                    <div class="pb-2">
-                                        <label for="password" class="form-label">Konfirmasi Password</label>
-                                        <input type="password" name="password" id="password"
-                                        class="form-control
-                                        @error('password') 
-                                        is-invalid
-                                        @enderror
-                                        ">
-
-                                        @error('password')
-                                            <label class="form-check-label invalid-feedback">
-                                                {{ $message }}
-                                            </label>
-                                        @enderror
-                                    </div>
                                 </div>
 
                                 <div class="col-md-3 px-3">
