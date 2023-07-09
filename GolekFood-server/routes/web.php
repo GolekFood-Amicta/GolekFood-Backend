@@ -103,8 +103,10 @@ Route::resource('/change-password', ChangePasswordController::class)->names([
 //Langganan News
 Route::resource('/langganan-news', ListSubscriptionNewsController::class)->names([
     'index' => 'list-langganan-news',
+    'create' => 'create-langganan-news',
+    'store' => 'show-langganan-news',
 ])->middleware('auth');
 
-Route::get('/langganan-news-search', [ListSubscriptionNewsController::class, 'search'])->name('search-langganan-news')->middleware('auth');
 
+Route::get('/langganan-news-search', [ListSubscriptionNewsController::class, 'search'])->name('search-langganan-news')->middleware('auth');
 Route::get('/send-email', [TestingEmailController::class, 'index']);

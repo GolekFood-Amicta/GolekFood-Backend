@@ -30,7 +30,7 @@
 
                             <div class="row p-3 border border-primary ">
                                 <div class="col py-3">
-                                    <a class="btn btn-primary" href="{{ route('create-news') }}" role="button">
+                                    <a class="btn btn-primary" href="{{ route('create-langganan-news') }}" role="button">
                                         <i class="bi bi-plus">Tulis Berita ke Mailist</i>
                                     </a>
                                 </div>

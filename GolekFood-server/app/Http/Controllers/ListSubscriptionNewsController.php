@@ -25,6 +25,8 @@ class ListSubscriptionNewsController extends Controller
     public function create()
     {
         //
+        $totalSubscriptionNews = SubscriptionNews::count();
+        return view('adminpage.subscriptionnewspage.createsubsnews', ['totalSubscriptionNews' => $totalSubscriptionNews]);
     }
 
     /**
