@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
                 'email' => 'anas@gmail.com',
                 'password' => Hash::make('password'),
                 'address'=> fake()->address(),
-                'roles_id' => rand(1,2),
+                'roles_id' => 2,
                 // 'subscription' => fake()->randomElement(['-', 'Monthly', 'Yearly'])
             ],
             [
