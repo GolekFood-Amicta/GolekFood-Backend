@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\SurveyResult;
 use Illuminate\Http\Request;
 use App\Http\Resources\PostResource;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class SurveyResultController extends Controller
@@ -23,27 +25,40 @@ class SurveyResultController extends Controller
     public function addSurveyResult(Request $request)
     {
         try {
-
                 $rules = [
-                    'umur' => 'required',
-                    'jenis_kelamin' => 'required',
-                    'hasil' => 'required', 
+                    'user_id' => 'required',
+                    'already_survey' => 'required',
                 ];
                 $validation = Validator::make($request->all(), $rules);
                 if ($validation->fails()) {
                     return new PostResource(false, "Survey Result gagal ditambahkan", $validation->errors()->all());
                 }
 
-                $data = [
-                    'umur' => $request->umur,
-                    'jenis_kelamin' => $request->jenis_kelamin,
-                    'hasil' => $request->hasil,
-                ];
+                $user = User::where('id', $request->user_id)->first();
+                if (!$user) {
+                    return new PostResource(false, "Survey Result gagal ditambahkan", "User tidak ditemukan");
+                }
 
-                $survey = SurveyResult::create($data);
+                $user->update([
+                    'already_survey' => $request->already_survey,
+                ]);
+
+                if(isset($request->umur) && isset($request->jenis_kelamin) && isset($request->hasil)){
+                    $data = [
+                        'umur' => $request->umur,
+                        'jenis_kelamin' => $request->jenis_kelamin,
+                        'hasil' => $request->hasil,
+                    ];
+
+                    $survey = SurveyResult::create($data);
+                    $survey->user = $user;
+                }
+
+               if(isset($survey)){
+                    return new PostResource(true, "Survey Result berhasil ditambahkan", $survey);
+                } 
         
-
-            return new PostResource(true, "Survey Result berhasil ditambahkan", $survey);
+            return new PostResource(true, "Survey Result berhasil ditambahkan", $user);
         } catch (\Throwable $th) {
             return new PostResource(false, "Survey Result gagal ditambahkan");
         }

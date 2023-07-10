@@ -195,7 +195,6 @@ class FavouriteController extends Controller
     public function discoverFoodAdv(Request $request)
     {
         try {
-
             $limitUserNonPremium = 3;
 
             $periksa = UserHistory::where('user_id', $request->user()->id)->get();
@@ -210,7 +209,6 @@ class FavouriteController extends Controller
             if (!Auth::check()) {
                 return new PostResource(false, "unauthenticated");
             }
-
 
             //Mengambil data subscription user 
             $subs = UserSubs::where('user_id', $request->user()->id)->latest()->first();
@@ -265,8 +263,7 @@ class FavouriteController extends Controller
 
             return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
         } catch (\Throwable $th) {
-            return  $th;
-            // new PostResource(false, "Gagal mendapatkan data discover Food");
+            return new PostResource(false, "Gagal mendapatkan data discover Food");
         }
     }
 }

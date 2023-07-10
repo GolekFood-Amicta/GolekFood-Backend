@@ -26,12 +26,13 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('already_survey')->default('0');
             $table->string('password');
             $table->foreignId('roles_id')->constrained('roles');
             $table->rememberToken();
             // $table->string('subscription');
             // $table->timestamp('subscription_start')->nullable();
-            // $table->timestamp('subscription_end')->nullable();
+            // $table->timestamp('subscription_end')->nullable();   
             $table->timestamps();
         });
     }

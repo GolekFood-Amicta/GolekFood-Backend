@@ -42,7 +42,6 @@ class ChangePasswordController extends Controller
         ]);
         
         return redirect()->route('dashboard')->with('success', 'Password berhasil diubah');
-
     }
 
     /**
