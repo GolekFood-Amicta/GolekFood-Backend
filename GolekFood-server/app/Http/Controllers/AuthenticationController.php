@@ -115,11 +115,13 @@ class AuthenticationController extends Controller
         try {
             if (Auth::check()) {
                 $rules = [
-                    'password'      => 'required|min:6',
+                    'old_password' => 'required',
+                    'password'      => 'required|min:6|confirmed',
                 ];
                 $messages = [
                     'password.required'     => 'Password wajib diisi',
                     'password.min'          => 'Password minimal 6 karakter',
+                    'password.confirmed'    => 'Password tidak sama dengan konfirmasi password',
                 ];
                 $validator = Validator::make($request->all(), $rules, $messages);
                 if ($validator->fails()) {
@@ -127,6 +129,11 @@ class AuthenticationController extends Controller
                 }
                 $user = $request->user();
                 $user = User::where('id', $user->id)->first();
+
+                if(!Hash::check($request->old_password, $user->password)){
+                    return new PostResource(false, "password anda salah");
+                }
+
                 try {
                     $user->update([
                         'password' => Hash::make($request->password)

@@ -126,13 +126,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer 6|3Gv8mScqCbTX0AI3HbbtrQg8A3IwWNvs1qtdStRB",
+								"value": "Bearer 5|ZhkSdvUxKwyjPIiiZ6R0MV22sngu5yu8NcF94d0a",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\":\"password3\"\r\n}",
+							"raw": "{\r\n    \"old_password\" : \"password\",\r\n    \"password\":\"password2\",\r\n    \"password_confirmation\" : \"password2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -951,7 +951,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"umur\" : 16, \r\n    \"jenis_kelamin\" : \"P\",\r\n    \"hasil\" : \"food\"\r\n}",
+							"raw": "{\r\n    //primary\r\n    \"user_id\" : 1,\r\n    \"already_survey\" : true,\r\n\r\n    //optional\r\n    \"umur\" : 17,\r\n    \"jenis_kelamin\" : \"L\",\r\n    \"hasil\" : \"food\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -968,7 +968,86 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Add Survey Result",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    //primary\r\n    \"user_id\" : 1,\r\n    \"already_survey\" : true,\r\n\r\n    //optional\r\n    \"umur\" : 17,\r\n    \"jenis_kelamin\" : \"L\",\r\n    \"hasil\" : \"food\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/survey-result",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"survey-result"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Jul 2023 08:50:40 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Jul 2023 08:50:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Survey Result berhasil ditambahkan\",\n    \"data\": {\n        \"umur\": 17,\n        \"jenis_kelamin\": \"L\",\n        \"hasil\": \"food\",\n        \"updated_at\": \"2023-07-10T08:50:40.000000Z\",\n        \"created_at\": \"2023-07-10T08:50:40.000000Z\",\n        \"id\": 106,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"ade@gmail.com\",\n            \"name\": \"Ade Febrian\",\n            \"address\": \"3088 Tillman Rapids Suite 402\\nHodkiewiczshire, ME 21695-7045\",\n            \"avatar\": \"default-profile.png\",\n            \"email_verified_at\": null,\n            \"already_survey\": true,\n            \"roles_id\": 1,\n            \"created_at\": \"2023-07-10T05:39:38.000000Z\",\n            \"updated_at\": \"2023-07-10T08:50:40.000000Z\"\n        }\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Survey Result",
