@@ -231,7 +231,7 @@ class FavouriteController extends Controller
             }
 
 
-            $url = "http://34.101.68.137:5000/advpredict"; // Ganti dengan URL API yang sesuai
+            $url = "https://ml.golekfood.xyz/advpredict"; // Ganti dengan URL API yang sesuai
 
             $data = [
                 "energi" => $request->energi,
