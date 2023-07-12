@@ -209,7 +209,6 @@ class FavouriteController extends Controller
             if (!Auth::check()) {
                 return new PostResource(false, "unauthenticated");
             }
-
                 $currentDate = Carbon::now();
                 //Mengambil data subscription user 
                 $subs = UserSubs::where('user_id', $request->user()->id)
@@ -220,18 +219,48 @@ class FavouriteController extends Controller
 
             // //Jika user bukan admin
             if (!($request->user()->roles_id == 2)) {
-
                 // Jika user bukan admin dan sudah mencapai limit harian
                 if ($request->user()->roles_id == 1 && $count >= $limitUserNonPremium) {
-                    return new PostResource(false, "Sudah Mencapai limit harian user biasa");
-                    if(!$subs){
-                        return new PostResource(false, "Bukan Subscription");
+                    if($subs){
+
+                        $url = "https://ml.golekfood.xyz/advpredict"; // Ganti dengan URL API yang sesuai
+                        $data = [
+                            "energi" => $request->energi,
+                            "protein" => $request->protein,
+                            "lemak" => $request->lemak,
+                            "karbohidrat" => $request->karbohidrat
+                        ];
+            
+                        $response = Http::post($url, $data);
+            
+                        $data = $response->json();
+                        // Mengakses data di dalam "data"
+                        $recom = $data['data'];
+            
+                        // Menambahkan key "is_favourite" pada setiap data
+                        $recomWithFavourite = array_map(function ($item) use ($request) {
+                            //Jika pada saat ini user sudah pernah memfavoritkan makanan tersebut
+                            $item['is_favourite'] = Favourite::where('user_id', $request->user()->id)->where('food_id', $item['id_food'])->exists();
+                            return $item;
+                        }, $recom);
+            
+            
+                        UserHistory::create([
+                            'user_id' => $request->user()->id
+                        ]);
+            
+                        // Menggabungkan data yang telah ditambahkan "is_favourite" ke dalam "data"
+                        $result = $recomWithFavourite;
+            
+                        return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
+
+                       
                     } 
+                    return new PostResource(false, "Sudah Mencapai limit harian user biasa");
                 }
             }
 
             $url = "https://ml.golekfood.xyz/advpredict"; // Ganti dengan URL API yang sesuai
-
             $data = [
                 "energi" => $request->energi,
                 "protein" => $request->protein,
@@ -261,8 +290,11 @@ class FavouriteController extends Controller
             $result = $recomWithFavourite;
 
             return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
+           
+
         } catch (\Throwable $th) {
             return new PostResource(false, "Gagal mendapatkan data discover Food");
         }
     }
+
 }
