@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserSubs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -16,7 +17,10 @@ class UserController extends Controller
     {
         try {
             if (isset($id)) {
+                $currentDate = Carbon::now();      
                 $user = User::where('id', $id)->first();
+                $subscription = UserSubs::where('user_id', $id)->where("status", "active") ->where('subscription_end', '>', $currentDate)->exists();
+                $user->subscription = $subscription;
             } else {
                 $user = User::all();
             }

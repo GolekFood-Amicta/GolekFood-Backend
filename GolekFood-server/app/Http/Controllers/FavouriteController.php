@@ -253,7 +253,6 @@ class FavouriteController extends Controller
                         $result = $recomWithFavourite;
             
                         return new PostResource(true, "Berhasil mendapatkan data discover Food", $result);
-
                        
                     } 
                     return new PostResource(false, "Sudah Mencapai limit harian user biasa");

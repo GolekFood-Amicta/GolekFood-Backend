@@ -18,7 +18,10 @@ class UserSubsController extends Controller
     {
         try {
             if (isset($id)) {
-                $data = UserSubs::where('user_id', $id)->first();
+                $data = UserSubs::where('user_id', $id)->latest()->get();
+                if ($data == null) {
+                    return new PostResource(false, "data subscription tidak ditemukan");
+                }
             } else {
                 $data = UserSubs::all();
             }
