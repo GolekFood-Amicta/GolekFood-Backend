@@ -8,7 +8,7 @@
   <title>GolekFoods-Admin | Login Page</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">

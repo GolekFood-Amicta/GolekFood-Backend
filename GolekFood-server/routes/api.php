@@ -30,7 +30,6 @@ Route::post('/forgot-password', [AuthenticationController::class, 'forgotPasswor
 Route::get('/reset-password/{token}', [AuthenticationController::class, 'resetPassword'])->name('password.reset');
 Route::post('/reset-password-client', [AuthenticationController::class, 'resetPasswordClient']);
 
-
 //User
 Route::controller(UserController::class)->group(function(){
     Route::prefix('/user')->group(function (){
@@ -40,8 +39,6 @@ Route::controller(UserController::class)->group(function(){
         Route::delete('/', 'deleteUser');
     });
 });
-
-
 
 //feedback
 Route::controller(FeedbackController::class)->group(function () {

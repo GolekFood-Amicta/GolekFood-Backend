@@ -210,26 +210,25 @@ class FavouriteController extends Controller
                 return new PostResource(false, "unauthenticated");
             }
 
-            //Mengambil data subscription user 
-            $subs = UserSubs::where('user_id', $request->user()->id)->latest()->first();
-            //Mengambil data tanggal saat ini
-            $currentDate = Carbon::now();
+                $currentDate = Carbon::now();
+                //Mengambil data subscription user 
+                $subs = UserSubs::where('user_id', $request->user()->id)
+                ->where('status', 'active')
+                ->where('subscription_end', '>', $currentDate)
+                ->exists();
+                
 
-            //Jika user bukan admin
+            // //Jika user bukan admin
             if (!($request->user()->roles_id == 2)) {
 
                 // Jika user bukan admin dan sudah mencapai limit harian
-                if ($request->user()->roles_id = 1 && $count >= $limitUserNonPremium) {
+                if ($request->user()->roles_id == 1 && $count >= $limitUserNonPremium) {
                     return new PostResource(false, "Sudah Mencapai limit harian user biasa");
-
-                    // Jika user bukan admin dan belum berlangganan
-                    if ($currentDate->lt($subs['subscription_start']) || $currentDate->gt($subs['subscription_end'])) {
-                        // Jika tanggal saat ini sebelum tanggal mulai atau setelah tanggal berakhir
-                        return new PostResource(false, "subscription telah habis");
-                    }
+                    if(!$subs){
+                        return new PostResource(false, "Bukan Subscription");
+                    } 
                 }
             }
-
 
             $url = "https://ml.golekfood.xyz/advpredict"; // Ganti dengan URL API yang sesuai
 
