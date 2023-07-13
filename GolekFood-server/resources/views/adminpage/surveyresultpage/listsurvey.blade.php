@@ -37,6 +37,7 @@
                                             <th>No</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Umur</th>
+                                            <th>Hasil</th>
                                             <th>Tanggal</th>
                                         </tr>
                                     </thead>
@@ -53,6 +54,7 @@
                                                 @endif
 
                                                 <td>{{ $survey->umur }}</td>
+                                                <td>{{ $survey->hasil }}</td>
                                                 <td>{{ $survey->created_at }}</td>   
                                                 </td>
                                             </tr>
