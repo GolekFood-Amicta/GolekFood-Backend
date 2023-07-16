@@ -28,7 +28,7 @@
                             @endif
 
 
-                            <div class="row p-3 border border-primary ">
+                            <div class="row p-3 border border-primary table-responsive">
                                 <form class="py-3 " action="{{ route('search-feedback') }}" method="GET">
                                     <div class="row justify-content-end">
                                         <div class="col-md-3">

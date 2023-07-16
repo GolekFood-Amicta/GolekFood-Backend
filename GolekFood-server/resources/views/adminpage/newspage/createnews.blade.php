@@ -22,7 +22,7 @@
                             <form class=" g-3" method="post" action=" {{ route('list-news.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <div class="w-25">
+                                <div class="col-md-3">
 
                                     <h5>Data Author</h5>
                                     <hr>
@@ -37,7 +37,7 @@
                                     <hr>
                                 </div>
 
-                                <div class="w-75">
+                                <div class="col-md-9">
                                     <div class="py-2">
                                         <label for="title" class="form-label">Title</label>
                                         <input type="text"

@@ -49,7 +49,7 @@
                             </div>
 
 
-                            <div class="row p-3 border border-primary ">
+                            <div class="row p-3 border border-primary table-responsive">
 
                                 <table id="myTable" class="table table-striped border-primary table-hover table-bordered">
                                     <thead>

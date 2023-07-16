@@ -14,7 +14,7 @@
         <div class="row">
 
             <!-- Left side columns -->
-            <div class="col-lg-12">
+            <div class="col-sm-12">
                 <div class="row">
                     <div class="card">
                         <div class="card-body p-3">
@@ -24,7 +24,7 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
-                                <div class="w-25">
+                                <div class="col-md-3">
 
                                     <h5>Data Author</h5>
                                     <hr>
@@ -39,7 +39,7 @@
                                     <hr>
                                 </div>
 
-                                <div class="w-75">
+                                <div class="col-md-9">
                                     <div class="py-2">
                                         <label for="title" class="form-label">Title</label>
                                         <input type="text" value="{{ $news->title }}"
@@ -69,10 +69,6 @@
                                         <input class="form-control" type="file" id="image" name="image"
                                             value="{{ $news->image }}">
                                     </div>
-
-
-
-
 
                                     <div class="py-2">
                                         <label for="bpjs" class="form-label">Isi Artikel</label>

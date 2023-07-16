@@ -14,7 +14,7 @@
         <div class="row">
 
             <!-- Left side columns -->
-            <div class="col-lg-12">
+            <div class="col-sm-12">
                 <div class="row">
                     <div class="card">
                         <div class="card-body p-3">
@@ -23,7 +23,7 @@
                                 {{-- enctype="multipart/form-data" --}}
                                 >
                                 @csrf
-                                <div class="w-50">
+                                <div class="col-md-6">
 
                                     <h5>Data Author</h5>
                                     <hr>
@@ -37,7 +37,7 @@
             
                                 </div>
 
-                                <div class="w-25">
+                                <div class="col-md-3">
 
                                     <h5>Data Penerima</h5>
                                     <hr>
@@ -50,8 +50,7 @@
                                 </div>
 
                                 
-                                <div class="w-75">
-
+                                <div class="col-md-9">
                                     
                                     <h5>Data Berita</h5>
                                     <hr>
@@ -72,18 +71,6 @@
                                         @enderror
                                     </div>
                         
-                                    {{-- <div class="mb-3">
-                                        <label for="image" class="form-label">Gambar</label>
-                                        <input
-                                            class="form-control 
-                                            @error('title') 
-                                            is-invalid
-                                            @enderror"
-                                            type="file" id="image" name="image">
-                                        @error('body')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div> --}}
 
                                     <div class="py-2">
                                         <label for="body" class="form-label">Body</label>
