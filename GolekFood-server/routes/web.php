@@ -104,7 +104,7 @@ Route::resource('/change-password', ChangePasswordController::class)->names([
 Route::resource('/langganan-news', ListSubscriptionNewsController::class)->names([
     'index' => 'list-langganan-news',
     'create' => 'create-langganan-news',
-    'store' => 'show-langganan-news',
+    'store' => 'store-langganan-news',
 ])->middleware('auth');
 
 

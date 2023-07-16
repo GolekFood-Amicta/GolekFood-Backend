@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-body p-3">
 
-                            <form class="row g-3" method="post" action=" route('list-news.store') }}"
+                            <form class="row g-3" method="post" action="{{ route('store-langganan-news') }}"
                                 {{-- enctype="multipart/form-data" --}}
                                 >
                                 @csrf
@@ -34,7 +34,6 @@
                                             disabled>
                                     </div>
 
-            
                                 </div>
 
                                 <div class="col-md-3">

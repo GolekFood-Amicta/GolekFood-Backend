@@ -17,9 +17,11 @@ class TestingSendingEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public $subject, public $body)
     {
         //
+        $this->subject = $subject;
+        $this->body = $body;
     }
 
     /**
@@ -28,7 +30,7 @@ class TestingSendingEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Testing Sending Email',
+            subject: $this->subject,
         );
     }
 
@@ -39,6 +41,11 @@ class TestingSendingEmail extends Mailable
     {
         return new Content(
             markdown: 'mail.testing-sending-email',
+            with: [
+                'subject' => $this->subject,
+                'body' => $this->subject,
+            ],
+
         );
     }
 

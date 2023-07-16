@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\SubscriptionNews;
+use App\Models\UserSubs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestingSendingEmail;
 
 class ListSubscriptionNewsController extends Controller
 {
@@ -35,30 +38,21 @@ class ListSubscriptionNewsController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $emails = SubscriptionNews::pluck('email');
+        $validateData = $request->validate([
+            'subject' => 'required|max:255',
+            'body' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(SubscriptionNews $subscriptionNews)
-    {
-        //
-    }
+        foreach($emails as $email){
+            // Mail::raw($validateData['body'], function($message) use ($email, $validateData){
+            //     $message->to($email)
+            //             ->subject($validateData['subject'])
+            //             ->html($validateData['body']);
+            // });
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(SubscriptionNews $subscriptionNews)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, SubscriptionNews $subscriptionNews)
-    {
-        //
+            Mail::to($email)->send(new TestingSendingEmail($validateData['subject'], $validateData['body']));
+        }
     }
 
     /**

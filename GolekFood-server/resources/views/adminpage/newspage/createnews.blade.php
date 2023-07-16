@@ -68,8 +68,6 @@
                                         @enderror
                                     </div>
 
-
-
                                     <div class="py-2">
                                         <label for="bpjs" class="form-label">Isi Artikel</label>
                                         <input id="body" type="hidden" name="body">
@@ -81,8 +79,6 @@
 
                                     </div>
                                 </div>
-
-
 
                                 <div class="col-12 py-2">
                                     <button type="submit" class="btn btn-primary">Submit</button>

@@ -1,10 +1,10 @@
 <x-mail::message>
-# Introduction
+{{ $subject }}
 
-The body of your message.
+{!! $body !!}
 
-<x-mail::button :url="''">
-Button Text
+<x-mail::button :url="env('APP_URL_CLIENT')">
+Kunjungi Website Kami
 </x-mail::button>
 
 Thanks,<br>
