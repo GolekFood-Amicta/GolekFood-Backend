@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubscriptionNews;
-use App\Models\UserSubs;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Jobs\ProcessNewsletter;
+
+use App\Models\SubscriptionNews;
 use App\Mail\TestingSendingEmail;
+use App\Http\Controllers\Controller;
+use App\Jobs\ProcessNewsSubs;
+use Illuminate\Support\Facades\Mail;
+
 
 class ListSubscriptionNewsController extends Controller
 {
@@ -45,14 +49,11 @@ class ListSubscriptionNewsController extends Controller
         ]);
 
         foreach($emails as $email){
-            // Mail::raw($validateData['body'], function($message) use ($email, $validateData){
-            //     $message->to($email)
-            //             ->subject($validateData['subject'])
-            //             ->html($validateData['body']);
-            // });
-
-            Mail::to($email)->send(new TestingSendingEmail($validateData['subject'], $validateData['body']));
+            // Mail::to($email)->send(new TestingSendingEmail($validateData['subject'], $validateData['body']));
+            ProcessNewsSubs::dispatch($email, $validateData['subject'], $validateData['body']);
         }
+
+        return redirect()->route('dashboard')->with('success', 'Email has been sent to queue');
     }
 
     /**
