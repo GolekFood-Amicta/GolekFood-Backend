@@ -9,6 +9,7 @@ use App\Models\UserSubs;
 use App\Models\SurveyResult;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class DashboardController extends Controller
 {
@@ -29,5 +30,17 @@ class DashboardController extends Controller
                 ]
             ],
         ]);
+    }
+
+    public function verifEmail(Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+     
+        return back()->with('success', 'Verification link sent!');
+    }
+
+    public function sendVerifEmail (EmailVerificationRequest $request) {
+        $request->fulfill();
+     
+        return redirect('/dashboard-admin');
     }
 }
