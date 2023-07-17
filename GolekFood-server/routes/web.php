@@ -16,7 +16,9 @@ use App\Http\Controllers\{
     UserProfileController
 };
 use App\Models\SubscriptionNews;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,19 @@ Route::post('/logout-admin', [LogoutController::class,'logout'])->name('logout')
 
 
 Route::get('/dashboard-admin', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+Route::get('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+ 
+    return back()->with('success', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/dashboard-admin');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
 
 //feedback
 Route::resource('/list-feedback', ListFeedbackController::class)->names([

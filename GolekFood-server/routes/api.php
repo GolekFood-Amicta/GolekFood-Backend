@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\FavouriteController;
-use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\SubscriptionNewsController;
-use App\Http\Controllers\SurveyResultController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserSubsController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\UserSubsController;
+use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\SurveyResultController;
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\SubscriptionNewsController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,7 @@ Route::post('/change-password', [AuthenticationController::class, 'changePasswor
 Route::post('/forgot-password', [AuthenticationController::class, 'forgotPassword']);
 Route::get('/reset-password/{token}', [AuthenticationController::class, 'resetPassword'])->name('password.reset');
 Route::post('/reset-password-client', [AuthenticationController::class, 'resetPasswordClient']);
+
 
 //User
 Route::controller(UserController::class)->group(function(){

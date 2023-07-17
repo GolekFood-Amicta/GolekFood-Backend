@@ -9,9 +9,9 @@ use Illuminate\Routing\Controller;
 use App\Http\Resources\PostResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
 class AuthenticationController extends Controller
 {
@@ -24,7 +24,7 @@ class AuthenticationController extends Controller
         ];
         $messages = [
             'email.required'        => 'Email wajib diisi',
-            'password.required'     => 'Password wajib diisi',
+        'password.required'     => 'Password wajib diisi',
             'password.min'          => 'Password minimal 6 karakter',
             'password.confirmed'    => 'Password tidak sama dengan konfirmasi password',
         ];
@@ -92,7 +92,6 @@ class AuthenticationController extends Controller
             return new PostResource(false, $validator->errors()->first());
         }
 
-
         $data = [
             'email' => strtolower($request->email),
             'name' => strtolower($request->name),
@@ -101,9 +100,10 @@ class AuthenticationController extends Controller
             'roles_id' => $request->roles_id,
         ];
 
-
         try {
             $user = User::create($data);
+            event(new Registered($user));
+
             return new PostResource(true, "User berhasil teregistrasi", $user);
         } catch (\Throwable $th) {
             return new PostResource(false, $th->getMessage());
@@ -191,4 +191,25 @@ class AuthenticationController extends Controller
         }
         
     }
+
+    public function verifyEmail($user_id, Request $request)
+    {
+        if (! $request->hasValidSignature()) {
+            return new PostResource(false, "link verifikasi tidak valid");
+        }
+
+        $user = User::findOrFail($user_id);
+
+        if (!$user->hasVerifiedEmail()) {
+            $user->markEmailAsVerified();
+        }
+        // $request->fulfill();
+    
+        // return new PostResource(true, "Email berhasil diverifikasi");
+        return new PostResource(true, "Email berhasil diverifikasi", $request);
+    }
+
+
 }
+
+

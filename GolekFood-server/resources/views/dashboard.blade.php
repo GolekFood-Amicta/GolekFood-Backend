@@ -19,19 +19,33 @@
             <div class="row">
                 <div class="card">
                     @if (session()->has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
+                    <div class="p-2">
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
                     </div>
                     @endif
 
                     @if (session()->has('error'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('error') }}
+                    <div class="p-2">
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    </div>
+                    @endif
+
+                    @if(auth()->user()->email_verified_at == null)
+                    <div class="p-2">
+                        <div class="alert alert-danger p-3" role="alert">
+                            Email belum diverifikasi, silahkan cek email anda untuk verifikasi. atau kirim ulang 
+                            <a href="{{ route('verification.send') }}" role="button">
+                                disini
+                            </a>
+                        </div>
                     </div>
                     @endif
                     
                     <div class="card-body">
-                       
                         <div class="row">
                             <!-- Sales Card -->
                             <div class="col-xxl-4 col-md-6 mt-5">
