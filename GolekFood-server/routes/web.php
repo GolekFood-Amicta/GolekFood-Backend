@@ -11,7 +11,6 @@ use App\Http\Controllers\{
     ListUserController,
     LoginController,
     LogoutController,
-    SubscriptionNewsController,
     TestingEmailController,
     UserProfileController
 };

@@ -163,8 +163,7 @@ class AuthenticationController extends Controller
     }
 
     public function resetPasswordClient(Request $request)
-    {   
-    
+    {  
         try {
             $request->validate([
                 'token' => 'required',
