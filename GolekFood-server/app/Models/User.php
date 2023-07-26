@@ -34,6 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'already_survey',
         'avatar',
         'google_id',
+        'facebook_id',
         'roles_id',
         'email_verified_at'
     ];

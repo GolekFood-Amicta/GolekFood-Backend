@@ -8,9 +8,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\UserSubsController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\GoogleAPIController;
+use App\Http\Controllers\FacebookAPIController;
 use App\Http\Controllers\SurveyResultController;
 use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\GoogleAPIController;
 use App\Http\Controllers\SubscriptionNewsController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -51,6 +52,8 @@ Route::get('/auth/google/callback', [GoogleAPIController::class, 'handleGoogleCa
 Route::group(['middleware' => ['web']], function () {
     Route::get('/auth/google', [GoogleAPIController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('/auth/google/callback', [GoogleAPIController::class, 'handleGoogleCallback']);
+    Route::get('/auth/facebook', [FacebookAPIController::class, 'redirectToFacebook'])->name('facebook.login');
+    Route::get('/auth/facebook/callback', [FacebookAPIController::class, 'handleFacebookCallback']);
 });
 
 //feedback
