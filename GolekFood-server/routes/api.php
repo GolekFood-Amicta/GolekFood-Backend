@@ -10,6 +10,7 @@ use App\Http\Controllers\UserSubsController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\SurveyResultController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\GoogleAPIController;
 use App\Http\Controllers\SubscriptionNewsController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -41,6 +42,15 @@ Route::controller(UserController::class)->group(function(){
         Route::put('/', 'updateUser')->middleware(['auth:sanctum']);
         Route::delete('/', 'deleteUser');
     });
+});
+
+//User with google
+Route::get('/auth/google', [GoogleAPIController::class, 'redirectToGoogle']);
+Route::get('/auth/google/callback', [GoogleAPIController::class, 'handleGoogleCallback']);
+
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/auth/google', [GoogleAPIController::class, 'redirectToGoogle'])->name('google.login');
+    Route::get('/auth/google/callback', [GoogleAPIController::class, 'handleGoogleCallback']);
 });
 
 //feedback

@@ -27,13 +27,13 @@ class User extends Authenticatable implements MustVerifyEmail
             // password
             // address
             // avatar
-
         'name',
         'email',
         'password',
         'address',
         'already_survey',
         'avatar',
+        'google_id',
         'roles_id',
         'email_verified_at'
     ];

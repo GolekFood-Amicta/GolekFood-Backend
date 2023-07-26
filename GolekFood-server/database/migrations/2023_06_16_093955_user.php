@@ -22,6 +22,7 @@ return new class extends Migration
             
             $table->id();
             $table->string('email')->unique();
+            $table->string('google_id')->nullable();
             $table->string('name');
             $table->string('address')->nullable();
             $table->string('avatar')->nullable();
